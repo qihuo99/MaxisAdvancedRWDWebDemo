@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Login Page</title>
+	<script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/jquery.placeholder.label.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	
+	<style>
+		html {
+			height: 100%;
+			width: 100%;
+			padding : 0;
+			margin: 0;
+		}
+		body {
+			background-color: transparent;
+			margin: 0px;
+		}
+		.mainContent .mainContentTop {
+			background: transparent;
+			border: 1px solid transparent;
+			padding: 0px;
+			margin-bottom: 10px;	
+		}
+		div.horizontal {
+			display: flex;
+			justify-content: center;
+		}
+		div.vertical {
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.mainContainer hr {
+			margin: 0px -20px 0px;
+			border: 0;
+			border-top: 1px solid #c9c7c7;
+		}
+		.content {
+			display: block; 
+			max-width: 900px;
+			width: 480px;
+			margin: 0 auto;
+		}
+		input {
+			border: 1px solid #ccc;
+			padding: 10px;
+			outline: none;
+			font-size: 14px;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			width: 250px;
+			margin: 10px;
+		}
+		.clr {
+			clear: both;
+		}
+		.showhidepwd {
+			padding-top: 1px;
+			margin: 12px -40px 0px;  /*  padding-top, padding-right, padding-bottom, padding-left */
+			width: -25px;
+			height: 20px;
+			border: none;
+		}	
+		#TopContainer {    
+			display: flex; 
+			justify-content: flex-end;
+			border: solid 1px transparent;
+		}
+		.loginTextEntryTip {
+			width:23%;
+			font-size: 12px;
+			color: #AD8C42;
+			display: inline-block;
+			text-align: right;	
+			margin-top: -21px;
+		}
+		.break {
+			content: " ";
+			display: block;
+			margin: 0.01em 0;
+		}
+	</style>
+	<script>
+	$(document).ready(function(){
+	
+        $('input[placeholder]').placeholderLabel();
+
+		$("#UserID").on("input", function() {
+			//console.log(this.value.length);
+			$("#countUserID").text(this.value.length);
+		});
+		
+		$("#UserPassword").on("input", function() {
+			$("#countPwd").text(this.value.length);
+		});
+		
+		$( "#btnOK" ).click(function() {
+		   $( location ).attr("href", "LocationSettings.html");
+		});
+
+		
+		$( "#btnSignUp" ).click(function() {
+		  //alert( "Signup .click() called." );
+		   $( location ).attr("href", "Signup.html");
+		});
+
+		$("#imgTogglePwd").click(function (e) {	
+			e.preventDefault();
+			var x = document.getElementById("UserPassword");
+			if (x.type === "password") {
+				x.type = "text";
+				$("#imgTogglePwd").attr('src',"images/pwdshow-s.png");
+			} else {
+				x.type = "password";
+				$("#imgTogglePwd").attr('src',"images/pwdhide-s.png");
+			}
+		});	
+			
+		function ValidateIPaddress(ipaddress) 
+		{
+			if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(myForm.emailAddr.value))
+			{
+				return (true)
+			}
+			alert("You have entered an invalid IP address!")
+			return (false)
+		}
+		
+	});
+	</script>
+</head>
+<body>
+<div id="mainContainer" >	
+
+	<div class="horizontal div1" style="border: 1px solid transparent;" >
+		<h2>Login</h2>
+	</div>
+	<form action="Login.html" method="get">
+		<div class="horizontal div1" style="border: 1px solid transparent;" >
+			<div class="vertical"  style="width:300px;border: 1px solid lightgray; margin: 0, auto;background-color: transparent;">
+				<div id="FormContentDiv" style="margin: 0 auto; ">
+					<div class="content" >
+						<input id="UserID" type="text" maxlength="16" placeholder="Enter user id" alt="User ID" required />
+						
+
+						<br />
+						<div class="horizontal underText1" style="border: 1px solid transparent;top:1em; width:350px; margin: 0 auto; position:relative; background-color: #OCOCOC;" >
+							<span class="loginTextEntryTip">	
+								{ <span id="countUserID">0</span> /16 )&nbsp;
+							</span>	
+						</div>
+						<br /><br />	
+						<input id="UserPassword" type="password"  maxlength="16" placeholder="Enter user password" alt="User Password" required />
+						<span style="top: 26px;"><img id="imgTogglePwd" src="images/pwdhide-s.png" alt="mask password" class="showhidepwd"></span>
+						<br />
+						<div class="horizontal underText2" style="border: 1px solid transparent;top:1em; width:350px; margin: 0 auto; position:relative; background-color: #OCOCOC;" >
+							<span class="loginTextEntryTip">	
+								{ <span id="countPwd">0</span> /16 )&nbsp;
+							</span>	
+						</div>
+						<div class="clr"></div>
+					</div>	
+				</div>	
+			 </div>  
+
+		</div>	
+		<div class="horizontal div2" style="border: 1px solid transparent;" >
+			<br /><br />
+			<input id="btnOK" type="submit" name="submit" value="OK" />
+		</div>	
+	</form>
+	<div class="horizontal div3" style="border: 1px solid transparent;" >
+		<input id="btnSignUp" type="submit" name="submit" value="Sign Up" />
+	</div>	
+	
+</div>
+</body>
+</html>

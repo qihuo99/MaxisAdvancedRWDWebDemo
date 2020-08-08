@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Rexlite Home Page</title>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<style>
+		html {
+			height:80%;
+		}
+		body {
+			background-color: #131313;
+		}
+		.mainContent {
+			background-color: #131313; /* blue */
+
+			margin: auto;
+			width: 385px;
+			height: 560px;	
+			border: 1px solid red; 
+			 padding-top: 45px; 
+			/* padding: 65px 60px 5px 60px;  */ /*padding-top, padding-right, padding-bottom, padding-left */
+		}
+
+		div.horizontal {
+			display: flex;
+			justify-content: center;
+		}
+
+		div.vertical {
+		    padding: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.subTitleDiv {
+			display: block; 
+			margin: 0 auto; 
+			color: #AD8C41; 
+			font-size: 32px;
+			font-weight: bold;
+		}
+		.MaxLiteOnOffButton {
+			display: block; 
+			margin: 0 auto; 
+			color: #AD8C42; 
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.bottomDiv { /* this css will ensure the div stays on the bottom of page all the time */
+			background-color: #131313;
+			height: 20px;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			padding-bottom: 5px;
+		}
+	</style>
+	<style>
+    .ui-widget-content { border: 0px solid #ccc; background: #262626  }
+    .ui-widget-header { border: 0px solid #aaaaaa; background: #AD8C42  }
+
+    .ui-slider { position: relative; text-align: left; }
+    .ui-slider .ui-slider-handle { height: 5px; width: 5px; position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+    .ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 10 10; }
+
+    .ui-slider-horizontal { height: .2em; width: 350px; }
+    .ui-slider-horizontal .ui-slider-handle { top: -.8em; margin-left: -.6em; width: 30px; height: 30px; border: 0; background: url('images/APP_Button_O-S-Front-S30px.png');} 
+    .ui-slider-horizontal .ui-slider-range { top: 0; height: 100%;  }
+    .ui-slider-horizontal .ui-slider-range-min { left: 0;  }
+    .ui-slider-horizontal .ui-slider-range-max { right: 70;}
+	</style>
+	<script>
+	$(document).ready(function(){
+
+		initOnOffButtonsCheck();
+		
+
+		function initOnOffButtonsCheck() {
+			var getBar1Value = $( "#MaxLiteBar1Progress" ).val();
+			var getBar2Value = $( "#MaxLiteBar2Progress" ).val();
+			var getBar3Value = $( "#MaxLiteBar3Progress" ).val();
+			console.log( "getBar1Value =" + getBar1Value);
+			console.log( "getBar2Value =" + getBar2Value);
+			console.log( "getBar3Value =" + getBar3Value);
+			
+			if (getBar1Value <=0 || isEmpty(getBar1Value) || getBar1Value == "0%"){
+				//console.log( "getBar1Value no value =" + getBar1Value);
+				$("#MaxLiteBar1OnButton").css('color', '#262626');
+				$("#MaxLiteBar1OffButton").css('color', '#262626');
+				
+			}
+			if (getBar2Value <=0 || isEmpty(getBar2Value) || getBar2Value == "0%"){
+				//console.log( "getBar2Value no value =" + getBar2Value);
+				$("#MaxLiteBar2OnButton").css('color', '#262626');
+				$("#MaxLiteBar2OffButton").css('color', '#262626');		
+			}
+			if (getBar3Value <=0 || isEmpty(getBar3Value) || getBar3Value == "0%"){
+				//console.log( "getBar3Value no value =" + getBar3Value);
+				$("#MaxLiteBar3OnButton").css('color', '#262626');
+				$("#MaxLiteBar3OffButton").css('color', '#262626');
+			}
+
+		}
+		
+		function getInitBarVal(arr)
+		{
+		
+			for (var i=0, len=arr.length; i<len; i++) 
+			{
+
+			}
+			console.log( sum ); // 9
+			
+		
+		}
+					
+		//var bleVal = ["1023", "1023", "1023"];
+		//console.log( "bleVal Value 0 =" + bleVal[0]);
+
+		
+		function isEmpty(value){
+		  return (value == null || value.length === 0);
+		}
+		
+		//function update() {
+		//	var tasks_time = $('#tasks_time').slider('value');
+		//	var tasks_done = $('#tasks_done').slider('value');
+		//	var total_cost = (tasks_time * 4 * tasks_done) / (tasks_done * 3);
+		//	var credits_needed = Math.round((total_cost / 10)+1);
+		//	$("#total_cost").text(total_cost.toFixed(2));
+		//	$("#curr-tasks_time").text(tasks_time);
+		//	//$("#curr-tasks_done").text(tasks_done);
+		//	$("#credits_needed").text(credits_needed.toFixed(0));	
+		//}
+
+	   $( "#MAXLiteSlider1").slider({
+			range: "min",
+			value: 0,
+			min: 0,
+			max: 100,
+			step: 10,
+			slide: function( event, ui )  {
+				$( "#MaxLiteBar1Progress" ).val( ui.value + "%" );
+				//console.log( "#MaxLiteBar1Progress val=" + ui.value );
+				if (ui.value <= 1)
+				{
+					$("#MaxLiteBar1OnButton").css('color', '#262626');
+					$("#MaxLiteBar1OffButton").css('color', '#262626');
+				}
+				else
+				{
+					$("#MaxLiteBar1OnButton").css('color', '#AD8C42');
+					$("#MaxLiteBar1OffButton").css('color', '#AD8C42');
+				}
+				//update();
+			}
+		});
+       
+	   	$( "#MAXLiteSlider2").slider({
+			range: "min",
+			value: 0,
+			min: 0,
+			max: 100,
+			step: 10,
+			slide: function( event, ui )  {
+				$( "#MaxLiteBar2Progress" ).val( ui.value + "%" );
+				//console.log( "#MaxLiteBar2Progress val=" + ui.value );
+				if (ui.value <= 1)
+				{
+					$("#MaxLiteBar2OnButton").css('color', '#262626');
+					$("#MaxLiteBar2OffButton").css('color', '#262626');
+				}
+				else
+				{
+					$("#MaxLiteBar2OnButton").css('color', '#AD8C42');
+					$("#MaxLiteBar2OffButton").css('color', '#AD8C42');
+				}
+				//update();
+			}
+		});
+	   
+	   	$( "#MAXLiteSlider3").slider({
+			range: "min",
+			value: 0,
+			min: 0,
+			max: 100,
+			step: 10,
+			slide: function( event, ui )  {
+				$( "#MaxLiteBar3Progress" ).val( ui.value + "%" );
+				//console.log( "#MaxLiteBar3Progress val=" + ui.value );
+				if (ui.value <= 1)
+				{
+					$("#MaxLiteBar3OnButton").css('color', '#262626');
+					$("#MaxLiteBar3OffButton").css('color', '#262626');
+				}
+				else
+				{
+					$("#MaxLiteBar3OnButton").css('color', '#AD8C42');
+					$("#MaxLiteBar3OffButton").css('color', '#AD8C42');
+				}
+				//update();
+			}
+		});
+	   
+		$( "#MaxLiteBar1Progress" ).val( $( "#MAXLiteSlider1" ).slider( "value" ) + "%");
+		$( "#MaxLiteBar2Progress" ).val( $( "#MAXLiteSlider2" ).slider( "value" ) + "%");
+		$( "#MaxLiteBar3Progress" ).val( $( "#MAXLiteSlider3" ).slider( "value" ) + "%");
+	});
+	</script>
+</head>
+<body>
+<div id="mainContent" class="">	
+	<div id="MAXLiteTop" class="MaxSceneTopDiv">
+		<div id="MaxSceneBackBtn" style="float:left;">
+			<a href="index.html">
+				<img border="0" alt="Back" src="images/APP_Button_Back.png" width="50px" height="40px">
+			</a>
+		</div>
+		<div id="MaxSceneMenuBtn" style="float:right;">
+			<a href="index.html">
+				<img border="0" alt="Menu" src="images/APP_Button_Menu.png" width="50px" height="40px">
+			</a>
+			
+
+			
+			
+		</div>
+	</div>
+    <br /><br /><br /><br />
+	<div class="horizontal div1" style="border: 1px solid transparent;" >
+		<div class="vertical"  style="border: 1px solid transparent; margin: 0, auto;background-color: #0C0C0C;">
+			<div class="subTitleDiv" style="" >
+				MAXLite M'L-3 01 
+				<br />
+			</div>
+			<div class="" style="display: block; margin: 0 auto; " >
+				<img id="MAXLiTE1_img" src="images/APP_Button_Control_M_L-3-ON.png" width="272" height="165"  /> 
+			</div>
+			<br /><br /><br />
+			<div class="subTitleDiv" style="padding: 0px 0px 0px 260px; margin: 0, auto;" >
+				<label for="MaxLiteBar1Progress">CH1 (10 increments):</label>
+				<input type="text" id="MaxLiteBar1Progress" readonly style="border:0; background-color: #131313; color:#AD8C42; font-size: 24px; font-weight:bold;">
+				<br />
+			</div>
+			<div class="horizontal subdiv1" style="border: 1px solid transparent;" >
+				<div id="MaxLiteBar1OffButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+					OFF
+				</div>	
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<img id="Vertical_Row1_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="2" height="20" /> 
+				</div>
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<div id="MAXLiteSlider1">
+					</div>
+				</div>
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<img id="Vertical_Row1_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="2" height="20" /> 
+				</div>
+			    <div id="MaxLiteBar1OnButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+					ON
+				</div>						
+			</div>		
+			<br /><br /><br />
+			<div class="subTitleDiv" style="padding: 0px 0px 0px 260px; margin: 0, auto;" >
+				<label for="MaxLiteBar2Progress">CH2 (10 increments):</label>
+				<input type="text" id="MaxLiteBar2Progress" readonly style="border:0; background-color: #131313; color:#AD8C42; font-size: 24px; font-weight:bold;">			
+				<br />
+			</div>
+			<div class="horizontal subdiv2" style="border: 1px solid transparent;" >
+				<div id="MaxLiteBar2OffButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+					OFF
+				</div>	
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<img id="Vertical_Row2_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="2" height="20" /> 
+				</div>
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<div id="MAXLiteSlider2">
+					</div>
+				</div>
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<img id="Vertical_Row2_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="2" height="20" /> 
+				</div>
+			    <div id="MaxLiteBar2OnButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+					ON
+				</div>						
+			</div>
+			<br /><br /><br />
+			<div class="subTitleDiv" style="padding: 0px 0px 0px 260px; margin: 0, auto;" >
+				<label for="MaxLiteBar3Progress">CH3 (10 increments):</label>
+				<input type="text" id="MaxLiteBar3Progress" readonly style="border:0; background-color: #131313; color:#AD8C42; font-size: 24px; font-weight:bold;">			
+				<br />
+			</div>
+			<div class="horizontal subdiv3" style="border: 1px solid transparent;" >
+				<div id="MaxLiteBar3OffButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+					OFF
+				</div>	
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<img id="Vertical_Row3_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="2" height="20" /> 
+				</div>
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<div id="MAXLiteSlider3">
+					</div>
+				</div>
+				<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+					<img id="Vertical_Row3_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="2" height="20" /> 
+				</div>
+			    <div id="MaxLiteBar3OnButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+					ON
+				</div>						
+			</div>
+			
+		</div>	
+
+	</div>
+	
+	
+	
+	<br /><br />
+	<div id="bottomDiv" class="bottomDiv">
+		<a href="MAXLiTE1.html">
+			<img src="images/APP_Button_REXLiTE.png" width="280" height="12" />
+		</a>
+	</div>
+</div>
+</body>
+</html>

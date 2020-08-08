@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Location Home Page</title>
+	<link type="text/css" rel="stylesheet" href="jquery-ui-themes-1.12.1/themes/smoothness/jquery-ui.css"/>
+	<link type="text/css" rel="stylesheet" href="css/cyrillic-ext.css"/>
+	<script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/jquery.placeholder.label.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<style>
+	html {
+		height: 100%;
+		width: 100%;
+		padding : 0;
+		margin: 0;
+	}
+	body {
+		background-color: transparent;
+	}
+	div.horizontal {
+		display: flex;
+		justify-content: center;
+	}
+	div.vertical {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+		
+		#mainContainer{
+			background: transparentred;
+			border: 1px solid transparent;
+		}
+	#leftSide{
+	   float:left;
+	   width:45%;
+	   height:100vh;
+	   paddding:0px 20px 0px 20px; 
+	   background: lightgray;
+	   border: 1px solid red;
+	}
+	#rightSide{
+		float:left;
+		width:50%;
+		height: 99vh;
+		background: transparent;
+		border: 1px solid yellow;
+	}	
+	.vertical-align-content {
+	  background-color: #f18c16;
+	  height: 100%;
+	  display:flex;
+	  align-items:center;
+	  /* Uncomment next line to get horizontal align also */
+	  /*  justify-content:center; */
+	}	
+	.imgSixClass {
+		bottom:0px;
+		margin: 0px;
+	}
+	#feedback { font-size: 1.4em; }
+	#selectable .ui-selecting { background: #FECA40; }
+	#selectable .ui-selected { background: #F39814; color: white; }
+	#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	#selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+	</style>
+	<script>
+	$(document).ready(function(){
+	
+		$( "#selectable" ).selectable({
+		  stop: function() {
+			var result = $( "#select-result" ).empty();
+			$( ".ui-selected", this ).each(function() {
+			  var index = $( "#selectable li" ).index( this );
+			  result.append( " #" + ( index + 1 ) );
+			});
+		  }
+		});
+			
+	});
+	</script>
+</head>
+<body>
+<div id="mainContainer">
+    <div id="leftSide">
+
+		<div class="horizontal Row1" style="border: 1px solid transparent; width:98%;height:3%; margin: 0 auto;top:5px; position:relative;" >
+		</div>
+		
+		<div class="horizontal Row1" style="border: 1px solid transparent; width:98%;height:25%; margin: 0 auto;top:5px; position:relative;" >
+			<div class="vertical"  style="border: 1px solid transparent; position:relative;float:left;">	
+				<img class="imgSixClass" id="MAXLiTE1_img" src="images/WEB-c_device_btn_ml1_off-s.png" width="100%" height="100%" style="border: 1px solid transparent; " /> 
+			</div>
+			<div class="vertical"  style="border: 1px solid transparent; position:relative;float:left;">	
+				<img class="imgSixClass" id="MAXLiTE2_img" src="images/WEB-c_device_btn_ml2_on-s.png" width="100%" height="100%" style="border: 1px solid transparent; " /> 
+			</div>
+			<div class="vertical"  style="border: 1px solid transparent; position:relative;float:left;">	
+				<img class="imgSixClass" id="MAXLiTE3_img" src="images/WEB-c_device_btn_ml3_off-s.png" width="100%" height="100%" style="border: 1px solid transparent; " /> 
+			</div>
+		</div>
+
+		<div class="horizontal Row2" style="border: 1px solid transparent; width:98%;height:25%; margin: 0 auto;top:5px; position:relative;" >
+			<div class="vertical"  style="border: 1px solid transparent; position:relative;float:left;">	
+				<img class="imgSixClass" id="MAXAir_img" src="images/WEB-c_device_btn_ma_off-s.png" width="100%" height="100%" style="border: 1px solid transparent; " /> 
+			</div>
+			<div class="vertical"  style="border: 1px solid transparent; position:relative;float:left;">	
+				<img class="imgSixClass" id="MAXScene_img" src="images/WEB-c_device_btn_ms_on-s.png" width="100%" height="100%" style="border: 1px solid transparent; " /> 
+			</div>
+			<div class="vertical"  style="border: 1px solid transparent; position:relative;float:left;">	
+				<img class="imgSixClass" id="MAXBook_img" src="images/WEB-c_device_btn_mb_on-s.png" width="100%" height="100%" style="border: 1px solid transparent; " /> 
+			</div>
+		</div>
+		<div class="horizontal Row1" style="border: 1px solid transparent; width:98%;height:3%; margin: 0 auto;top:5px; position:relative;" >
+		</div>
+	    <div class="horizontal Row1" style="border: 1px solid transparent; width:98%;height:20%; margin: 0 auto;top:5px; position:relative;" >
+		</div>
+		
+		
+
+	</div>
+    <div id="rightSide">
+	
+		<p id="feedback">
+		<span>You've selected:</span> <span id="select-result">none</span>.
+		</p>
+		 
+		<ol id="selectable">
+		  <li class="ui-widget-content">Item 1</li>
+		  <li class="ui-widget-content">Item 2</li>
+		  <li class="ui-widget-content">Item 3</li>
+		  <li class="ui-widget-content">Item 4</li>
+		  <li class="ui-widget-content">Item 5</li>
+		  <li class="ui-widget-content">Item 6</li>
+		</ol>
+	 
+	
+	
+	</div>
+</div>
+</body>
+</html>

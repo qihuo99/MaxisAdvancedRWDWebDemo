@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Maxis Device List</title>
+
+	<link type="text/css" rel="stylesheet" href="jquery-ui-themes-1.12.1/themes/smoothness/jquery-ui.css"/>
+	<script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color: #131313;
+			margin:0;
+			padding: 0;
+			height:100%;
+		}
+		.boxSt {
+			background-color: #131313;
+			cursor:pointer;
+			color: #AD8C41;
+			font-size: 14px;
+			font-weight: bold;
+			border: none;  
+			float:left;
+			padding: 0;
+			text-align:left;
+		}
+		.MaxSceneTopDiv {
+			background-color: #131313;
+			width: 95%;
+			height: 55px;
+			padding: 25px 70px 25px 25px;  /*padding-top, padding-right, padding-bottom, padding-left */
+		}
+		.MaxSceneTitleDiv {
+			background-color: #131313;
+			color: #AD8C41;
+			height: 80px;
+			width: 50%;
+			margin: 0 auto;
+			padding: 1px 10px 20px 85px;  /*padding-top, padding-right, padding-bottom, padding-left */
+		}
+		.MaxSceneList {
+			width: 60%;
+			background-color: #131313;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.btnMaxLeft {
+			cursor:pointer;
+			height: 150px;
+			align: bottom;
+			border: none;
+			padding: 0px 0px 0px 100px;
+			display: inline-block;
+			float:left;
+		}
+		.btnMaxRight {
+			cursor:pointer;
+			height: 150px;
+			align: bottom;
+			border: none;
+			padding: 0px 0px 0px 100px;
+			display: inline-block;
+			float:right;
+		}
+		.hrSt { 
+			height: 0.01%;
+			width: 100%;
+			display: block;
+			background-color: #424242;
+			padding: 0;
+		}
+		.btnRenameEdit {
+			background:url(images/APP_Button_Rename.png);
+			background-repeat: no-repeat;
+			background-size: 100px 40px;
+			cursor:pointer;
+			height: 60px;
+			width: 100%;
+			align: bottom;
+			vertical-align: middle;
+			float:right
+			border: none;
+			border-top: none;  border-right: none; border-bottom: none; border-left: 2px solid 424242; 
+		}
+		.btnSearch {
+			background:url(images/APP_Button_Search-Device.PNG) no-repeat;
+			background-repeat: no-repeat;
+			background-size: 80px 30px;
+			cursor:pointer;
+			height: 60px;
+			width: 100%;
+			align: bottom;
+			vertical-align: middle;
+			padding: 0;
+			float:right;
+			border-top: none;  border-right: none; border-bottom: none; border-left: 2px solid 424242; 
+		}
+		.maxbutton {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div style="width:100%;">
+		<div id="MaxSceneTop" class="MaxSceneTopDiv">
+			<div>	
+				<div id="btnMAXBook" class="maxbutton" >
+					MAXBook
+				</div>
+				<div id="btnMAXScene" class="maxbutton" >
+					MAXScene
+				</div>
+				<div id="btnMAXAir" class="maxbutton" >
+					MAXAir
+				</div>				
+				<div id="btnMAXLite1" class="maxbutton" >
+					MAXLite1
+				</div>		
+				<div id="btnMAXLite2" class="maxbutton" >
+					MAXLite2
+				</div>	
+				<div id="btnMAXLite3" class="maxbutton" >
+					MAXLite3
+				</div>			
+			</div>
+		</div>
+		<div id="MaxSceneTitle" class="MaxSceneTitleDiv">
+			<div id="MaxSceneSearchBtn" style="float:left;">
+				<br />
+				<br />
+				<br />
+			</div>
+		</div>
+	    <div id="MaxDeviceList" class="MaxSceneList">
+		</div>		
+	</div>
+	<script>
+	$(document).ready(function() {
+		//var div = document.getElementById('container');
+
+		var dictionary = '{"BlEDevicesFound":[' +
+			'{"ID":"0A", "SN":"000000000001", "bleName":"MAXBook"},' +
+			'{"ID":"0B", "SN":"000000000001", "bleName":"MAXScene"},' +
+			'{"ID":"0B", "SN":"000000000002", "bleName":"MAXScene"},' +
+			'{"ID":"0B", "SN":"000000000003", "bleName":"MAXScene"},' +
+			'{"ID":"14", "SN":"000000000001", "bleName":"MAXLite1"},' +
+			'{"ID":"14", "SN":"000000000002", "bleName":"MAXLite1"},' +
+			'{"ID":"14", "SN":"000000000003", "bleName":"MAXLite1"},' +
+			'{"ID":"16", "SN":"000000000001", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000002", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000003", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000004", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000005", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000006", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000007", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000008", "bleName":"MAXLite2"},' +
+			'{"ID":"18", "SN":"000000000001", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000002", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000003", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000004", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000005", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000006", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000007", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000008", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000009", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000010", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000011", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000012", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000013", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000014", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000015", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000016", "bleName":"MAXLite3"}]}';
+
+		obj = JSON.parse(dictionary);
+		
+
+		function createSubDiv(i) {
+			var getDiv = document.getElementById("MaxDeviceList");
+			var subDiv = document.createElement("DIV"); 
+			var btnHR = document.createElement("HR");
+			
+			subDiv.id = "div" + i;
+			subDiv.style.height = "60px";
+			subDiv.style.width = "100%";
+			//console.log("subDiv.id =" + subDiv.id);
+			btnHR.className = "hrSt";
+			
+			getDiv.appendChild(subDiv);
+			getDiv.appendChild(btnHR);
+		}
+		
+		var deviceIndex = 0;
+		$(".maxbutton").click(function() {
+			var btnID = $(this).attr('id'); // $(this) refers to button that was clicked
+			//alert(btnID);
+			var dBleID = getBleIDBySelection(btnID);
+			//alert(dBleID);
+			$("#MaxDeviceList").empty();
+			for(var i = 0; i < obj.BlEDevicesFound.length; ++i) {
+				var bleId = obj.BlEDevicesFound[i].ID;
+				if (bleId == dBleID)
+				{
+					createSubDiv(i);
+				}
+			}
+			deviceIndex = 0;
+			for(var i = 0; i < obj.BlEDevicesFound.length; ++i) {
+				var bleId = obj.BlEDevicesFound[i].ID;
+				var sn = obj.BlEDevicesFound[i].SN;
+				var bleName = obj.BlEDevicesFound[i].bleName;
+				if (bleId == dBleID)
+				{
+					deviceIndex++;
+					console.log("cr-- bleId - dBleID - i = " + bleId +  " - " + dBleID +  " - " + i );
+					console.log("cr-- deviceIndex = " + deviceIndex);
+					
+					createButton(i, bleId, sn, bleName, deviceIndex);					
+				}
+			}
+			deviceIndex = 0;
+		});
+		
+		function getBleIDBySelection(btnID){
+			var BleID = "";
+			switch (btnID) {
+				case "btnMAXBook":
+					BleID = "0A";
+					break;
+				case "btnMAXScene":
+					BleID = "0B";
+					break;
+				case "btnMAXAir":
+					BleID = "13";
+					break;
+				case "btnMAXLite1":
+					BleID = "14";
+					break;
+				case "btnMAXLite2":
+					BleID = "16";
+					break;
+				case "btnMAXLite3":
+					BleID = "18";
+					break;
+			}
+			return BleID;		
+		}
+        
+	});
+
+	function createButton(i, bleId, sn, bleName, deviceIndex) {
+		var getDiv = document.getElementById("container");
+		var btn = document.createElement("BUTTON");
+		var btnRenameEditor = document.createElement("BUTTON");
+		var btnSearch = document.createElement("BUTTON");
+
+		var subDivId  = "div" + i;
+		console.log("crBtn- subDiv.id =" + subDivId);
+		console.log("crBtn- bleId =" + bleId);
+		console.log("crBtn- sn =" + sn);
+		console.log("crBtn- bleName =" + bleName);
+		console.log(i + "deviceIndex = " + deviceIndex);
+
+		var getSubDiv = document.getElementById(subDivId); 
+		
+		btn.id = "btn" + bleName + "_" + deviceIndex;
+		//btn.innerHTML = "btn_" + i;
+		//alert(btn.id);
+		var indx = i + 1;
+		
+		btn.innerHTML = "<span style='font-size:20px;font-weight: bold;'>" + bleName + "&nbsp&nbsp&nbsp&nbsp&nbsp" + deviceIndex + "</span><br /> ID: " + bleId + "<br />SN: " + sn;
+		btn.style.height = "38px";
+		btn.style.width = "60%";
+		btn.className = "boxSt";
+	
+		btnRenameEditor.id = "btn" + bleName + "Edit_" + deviceIndex;
+		btnRenameEditor.style.height = "60px";
+		btnRenameEditor.style.width = "20%";
+		btnRenameEditor.className = "btnRenameEdit";
+		
+		btnSearch.id =  "btn" + bleName + "Search_" + deviceIndex;
+		btnSearch.style.height = "60px";
+		btnSearch.style.width = "20%";
+		btnSearch.className = "btnSearch";
+		
+		// 3. Add event handler
+		btn.addEventListener ("click", function() {
+		  alert(btn.id);
+		});
+		
+		// 4. Add event handler
+		btnRenameEditor.addEventListener ("click", function() {
+		  alert(btnRenameEditor.id);
+		});
+		
+		// 4. Add event handler
+		btnSearch.addEventListener ("click", function() {
+		  alert(btnSearch.id);
+		});
+	
+		getSubDiv.appendChild(btn);
+		getSubDiv.appendChild(btnRenameEditor);
+		getSubDiv.appendChild(btnSearch);
+	}
+	</script>
+	
+	
+</body>
+</html>

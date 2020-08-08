@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>ADSL Settings Page</title>
+	<link type="text/css" rel="stylesheet" href="jquery-ui-themes-1.12.1/themes/smoothness/jquery-ui.css"/>
+	<link type="text/css" rel="stylesheet" href="css/cyrillic-ext.css"/>
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+	<script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/jquery.placeholder.label.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<!--[if lte IE 8]>
+	<script type="text/javascript" src="js/mootools.js"></script>
+	<script type="text/javascript" src="js/selectivizr.js"></script>
+	<![endif]-->
+	<style>
+		html {
+			height: 100%;
+			width: 100%;
+			padding : 0;
+			margin: 0;
+		}
+		body {
+			background-color: transparent;
+		}
+		.mainContent .mainContentTop {
+			background: transparent;
+			border: 1px solid transparent;
+			padding: 0px;
+			margin-bottom: 10px;	
+		}
+		div.horizontal {
+			display: flex;
+			justify-content: center;
+		}
+		div.vertical {
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.mainContent hr {
+			margin: 0px -10px 0px;
+			border: 0;
+			border-top: 1px solid #c9c7c7;
+		}
+		.content {
+			display: block; 
+			max-width: 900px;
+			height: 100%;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid lightgray;
+		}
+		input {
+			border: 1px solid #ccc;
+			padding: 10px;
+			outline: none;
+			font-size: 14px;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			width: 430px;
+			margin: 10px;
+		}
+		.clr {
+			clear: both;
+		}
+		.showhidepwd {
+			padding-top: 1px;
+			margin: 10px -40px 0px;  /*  padding-top, padding-right, padding-bottom, padding-left */
+			width: -25px;
+			height: 20px;
+			border: none;
+		}
+		li{
+			margin: 5px 0;
+			font-size: 12px;
+			font-weight: bold;
+		} 
+		.loginTextEntryTip {
+			width:65%;
+			font-size: 12px;
+			color: #AD8C42;
+			display: inline-block;
+			text-align: right;	
+			margin-top: -25px;
+		}
+		.break {
+			content: " ";
+			display: block;
+			margin: 0.01em 0;
+		}
+	</style>
+	<script>
+	$(document).ready(function(){
+	
+        $('input[placeholder]').placeholderLabel();
+
+		$( "#accordion" ).accordion({
+			autoHeight: false,
+			navigation: true
+		});
+		
+		initTextCounters();
+		
+		$("#ipAddr").on("input", function() {
+			//console.log(this.value.length);
+			$("#countIpAddr").text(this.value.length);
+		});
+		
+		$("#portNumber").on("input", function() {
+			$("#countPortNumber").text(this.value.length);
+		});
+		
+		$("#UserName").on("input", function() {
+			$("#countUserName").text(this.value.length);
+		});
+		
+		$("#UserPassword").on("input", function() {
+			$("#countUserPassword").text(this.value.length);
+		});
+		
+		
+		$("#imgTogglePwd").click(function (e) {	
+			e.preventDefault();
+			var x = document.getElementById("UserPassword");
+			if (x.type === "password") {
+				x.type = "text";
+				//$(this).attr('type', 'text'); 
+				//alert('Show Password Img btn clicked');
+				$("#imgTogglePwd").attr('src',"images/pwdshow-s.png");
+			} else {
+				x.type = "password";
+				//$(this).attr('type', 'password'); 
+				//alert('hide Password Img btn clicked');
+				$("#imgTogglePwd").attr('src',"images/pwdhide-s.png");
+			}
+			
+		});
+			
+		function initTextCounters() 
+		{
+			var ipAddrTextLength = $("#ipAddr").val().length;
+			$("#countIpAddr").text(ipAddrTextLength);
+				
+			var portNumberLength = $("#portNumber").val().length;	
+			$("#countPortNumber").text(portNumberLength);
+
+			var UserNameLength = $("#UserName").val().length;	
+			$("#countUserName").text(UserNameLength);
+			
+			var UserPasswordLength = $("#UserPassword").val().length;	
+			$("#countUserPassword").text(UserPasswordLength);			
+		}	
+				
+		function ValidateIPaddress(ipaddress) 
+		{
+			if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(myForm.emailAddr.value))
+			{
+				return (true)
+			}
+			alert("You have entered an invalid IP address!")
+			return (false)
+		}
+
+	});
+	</script>
+</head>
+<body>
+<div id="mainContainer" class="mainContent">	
+	<div class="horizontal div1" style="border: 1px solid transparent;" >
+		<h1>&nbsp;ADSL Settings</h1>
+	</div>
+	<div id="MenuTopDiv" class="mainContentTop" >
+		<hr />
+	</div>
+	<div class="horizontal div1" style="border: 1px solid transparent;" >
+		<div class="vertical"  style="width:10%;border: 1px solid transparent; margin: 0, auto;background-color: transparent;">
+		</div>
+	
+		<div class="vertical"  style="width:550px;border: 1px solid transparent; margin: 0, auto;background-color: transparent;">
+			<div id="FormContentDiv" >
+				<div class="content" >
+					<form action="DeviceSettings.html" method="POST">
+						<input id="ipAddr" type="text" maxlength="50" placeholder="Enter IP Address xxx.xxx.xxx.xxx" alt="IP Address" value="192.168.1.104" required />
+						<br />
+						<div class="horizontal underText1" style="border: 1px solid transparent;top:1em; width:530px; margin: 0 auto; position:relative; background-color: #OCOCOC;" >
+							<span class="loginTextEntryTip">	
+								{ <span id="countIpAddr">0</span> / 50 )&nbsp;
+							</span>	
+						</div>
+						<br />
+						<input id="portNumber" type="text" maxlength="4" placeholder="Enter port number - xxxx" alt="Port Number" value="4000"  required />
+						<br />
+						<div class="horizontal underText2" style="border: 1px solid transparent;top:1em; width:530px; margin: 0 auto; position:relative; background-color: #OCOCOC;" >
+							<span class="loginTextEntryTip">	
+								{ <span id="countPortNumber">0</span> / 4 )&nbsp;
+							</span>	
+						</div>					
+						<br />
+						<input id="UserName" type="text" maxlength="25" placeholder="Enter user name" alt="User Name" required />
+						<br />
+						<div class="horizontal underText3" style="border: 1px solid transparent;top:1em; width:530px; margin: 0 auto; position:relative; background-color: #OCOCOC;" >
+							<span class="loginTextEntryTip">	
+								{ <span id="countUserName">0</span> / 25)&nbsp;
+							</span>	
+						</div>					
+						<br />	
+						<input id="UserPassword" type="password" maxlength="16" placeholder="Enter user password" alt="User Password" required />
+						<span style="top: 25px;"><img id="imgTogglePwd" src="images/pwdhide-s.png" alt="mask password" class="showhidepwd"></span>
+						<br />
+						<div class="horizontal underText4" style="border: 1px solid transparent;top:1em; width:530px; margin: 0 auto; position:relative; background-color: #OCOCOC;" >
+							<span class="loginTextEntryTip">	
+								{ <span id="countUserPassword">0</span> / 16)&nbsp;
+							</span>	
+						</div>								
+						<br />
+						<input id="btnSettings" type="submit" name="submit" value="submit" />
+					</form>
+					<div class="clr"></div>
+				</div>	
+			</div>	
+		 </div>  
+		<div class="vertical"  style="width:5%;border: 1px solid transparent; margin: 0, auto;background-color: transparent;">
+		</div>
+		<div class="vertical"  style="width:30%;border: 1px solid transparent; margin: 0, auto;background-color: transparent;">	
+			<div id="accordion">
+				<h3><a href="#">MAXBook #1</a></h3>
+				<div>
+					<p>
+						<ul id="selectable1">
+						  <li id='li001' value="100">ID:  0A</li>
+						  <li id='li002' value="101">SN:  000000000001</li>
+						  <li id='li003' value="102">Internal IP: 192.168.1.104</li>
+						  <li id='li004' value="103">Port: 4000</li>
+						  <li id='li005' value="104">External IP: 122.117.41.10</li>
+						</ul>					
+					</p>
+				</div>
+				<h3><a href="#">MAXBook #2</a></h3>
+				<div>
+					<p>
+						<ul id="selectable2">
+						  <li id='li001' value="100">ID:  0A</li>
+						  <li id='li002' value="101">SN:  000000000002</li>
+						  <li id='li003' value="102">Internal IP: 192.168.1.126</li>
+						  <li id='li004' value="103">Port: 4000</li>
+						  <li id='li005' value="104">External IP: 122.117.41.10</li>
+						</ul>	
+					</p>
+				</div>
+				<h3><a href="#">MAXBook #3</a></h3>
+				<div>
+					<p>
+						<ul id="selectable3">
+						  <li id='li001' value="100">ID:  0A</li>
+						  <li id='li002' value="101">SN:  000000000003</li>
+						  <li id='li003' value="102">Internal IP: 192.168.1.133</li>
+						  <li id='li004' value="103">Port: 4000</li>
+						  <li id='li005' value="104">External IP: 122.117.41.10</li>
+						</ul>	
+					</p>
+				</div>
+				<h3><a href="#">MAXBook #4</a></h3>
+				<div>
+					<p>
+						<ul id="selectable3">
+						  <li id='li001' value="100">ID:  0A</li>
+						  <li id='li002' value="101">SN:  000000000003</li>
+						  <li id='li003' value="102">Internal IP: 192.168.1.133</li>
+						  <li id='li004' value="103">Port: 4000</li>
+						  <li id='li005' value="104">External IP: 122.117.41.10</li>
+						</ul>	
+					</p>
+				</div>
+				<h3><a href="#">MAXBook #5</a></h3>
+				<div>
+					<p>
+						<ul id="selectable3">
+						  <li id='li001' value="100">ID:  0A</li>
+						  <li id='li002' value="101">SN:  000000000003</li>
+						  <li id='li003' value="102">Internal IP: 192.168.1.133</li>
+						  <li id='li004' value="103">Port: 4000</li>
+						  <li id='li005' value="104">External IP: 122.117.41.10</li>
+						</ul>	
+					</p>
+				</div>
+			
+			</div>
+		</div>
+		<div class="vertical"  style="width:12%;border: 1px solid transparent; margin: 0, auto;background-color: transparent;">
+		</div>
+	</div>	
+</div>
+</body>
+</html>

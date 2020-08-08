@@ -1,0 +1,792 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Location Device Main  Page</title>
+	<link type="text/css" rel="stylesheet" href="jquery-ui-themes-1.12.1/themes/smoothness/jquery-ui.css"/>
+	<script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/jquery.placeholder.label.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/lightslider.css"/>
+	<script slanguage="JavaScript" type="text/javascript" src="js/lightslider.js"></script> 
+	<link type="text/css" rel="stylesheet" href="popr/popr.css">
+	<script type="text/javascript" src="popr/popr.js"></script>
+	<style>
+		html {
+			height: 100%;
+			width: 100%;
+			padding : 0;
+			margin: 0;
+		}
+		body {
+			background-color: transparent;
+			margin: 0px;
+		}
+		.mainContent .mainContentTop {
+			background: transparent;
+			border: 1px solid transparent;
+			padding: 0px;
+			margin-bottom: 10px;	
+		}
+		div.horizontal {
+			display: flex;
+			justify-content: center;
+		}
+		div.vertical {
+			padding: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		#TopContainer {    
+			display: flex; 
+			justify-content: flex-end;
+			border: solid 1px transparent;
+			height: 61px;
+		}
+		.deviceContent { /* this css should center and scale to fit the web page */
+			background-color: transparent;
+			border: 1px solid transparent; 
+			width: 100%;
+			height: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: -5px;
+			position:relative;
+		}
+		.imgWrapper {
+			padding: 8px;
+		}
+		.imgSixClass {
+			bottom:0px;
+			margin: 0px;
+			background-color: #F5ECCE;
+		}
+		.boxSt {
+			background-color: #131313;
+			cursor:pointer;
+			color: #AD8C41;
+			font-size: 12px;
+			font-weight: bold;
+			border: none;  
+			float:left;
+			padding: 0;
+			text-align:left;
+		}
+		.MaxisDeviceList{
+			width: 350px;
+			height: 370px;
+			border: 1px solid #ccc;
+			background-color: transparent;
+		}
+		.break1 {
+		   display: block;
+		   line-height:0.1em;
+		}
+		.content {
+			display: block; 
+			max-width: 900px;
+			margin: 0 auto;
+		}
+		input {
+			border: 1px solid #ccc;
+			padding: 6px;
+			outline: none;
+			font-size: 14px;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			width: 335px;
+			margin: 8px;
+		}
+		.hrSt { 
+			height: 0.01%;
+			width: 100%;
+			display: block;
+			background-color: #424242;
+			padding: 0;
+		}
+		.btnRenameEdit {
+			background:url(images/APP_Button_Rename.png);
+			background-repeat: no-repeat;
+			background-size: 75px 50px;
+			cursor:pointer;
+			height: 60px;
+			width: 100%;
+			align: bottom;
+			vertical-align: middle;
+			margin-left: 2px;
+			float:left;
+			padding: 25px;
+			border: none;
+			border-top: none;  border-right: none; border-bottom: none; border-left: 2px solid 424242; 
+		}
+		.btnSearch {
+			background:url(images/APP_Button_Search-Device.PNG) no-repeat;
+			background-repeat: no-repeat;
+			background-size: 50px 45px;
+			cursor:pointer;
+			height: 60px;
+			width: 100%;
+			align: bottom;
+			vertical-align: middle;
+			margin-left: 2px;
+			padding: 15px;
+			float:left;
+			border-top: none;  border-right: none; border-bottom: none; border-left: 2px solid 424242; 
+		}
+	
+	input[type="range"] {
+		border: 1px solid #ccc;
+		padding: 6px;
+		outline: none;
+		font-size: 14px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+		width: 300px;
+		margin: 8px;		
+
+		align-items: center;
+		  -webkit-appearance: none;
+			 -moz-appearance: none;
+				  appearance: none;
+		background: none;
+		cursor: pointer;
+		display: flex;
+		height: 100%;
+		min-height: 50px;
+		overflow: hidden;
+	}
+	input[type="range"]:focus {
+	  box-shadow: none;
+	  outline: none;
+	}
+	input[type="range"]::-webkit-slider-runnable-track {
+	  background: #e33d44;
+	  content: '';
+	  height: 2px;
+	  pointer-events: none;
+	}
+	input[type="range"]::-webkit-slider-thumb {
+	  height: 18px;
+	  width: 18px;
+	  -webkit-appearance: none;
+			  appearance: none;
+	  background: #fff;
+	  border-radius: 8px;
+	  box-shadow: 5px 0 0 -8px #c7c7c7, 6px 0 0 -8px #c7c7c7, 7px 0 0 -8px #c7c7c7, 8px 0 0 -8px #c7c7c7, 9px 0 0 -8px #c7c7c7, 10px 0 0 -8px #c7c7c7, 11px 0 0 -8px #c7c7c7, 12px 0 0 -8px #c7c7c7, 13px 0 0 -8px #c7c7c7, 14px 0 0 -8px #c7c7c7, 15px 0 0 -8px #c7c7c7, 16px 0 0 -8px #c7c7c7, 17px 0 0 -8px #c7c7c7, 18px 0 0 -8px #c7c7c7, 19px 0 0 -8px #c7c7c7, 20px 0 0 -8px #c7c7c7, 21px 0 0 -8px #c7c7c7, 22px 0 0 -8px #c7c7c7, 23px 0 0 -8px #c7c7c7, 24px 0 0 -8px #c7c7c7, 25px 0 0 -8px #c7c7c7, 26px 0 0 -8px #c7c7c7, 27px 0 0 -8px #c7c7c7, 28px 0 0 -8px #c7c7c7, 29px 0 0 -8px #c7c7c7, 30px 0 0 -8px #c7c7c7, 31px 0 0 -8px #c7c7c7, 32px 0 0 -8px #c7c7c7, 33px 0 0 -8px #c7c7c7, 34px 0 0 -8px #c7c7c7, 35px 0 0 -8px #c7c7c7, 36px 0 0 -8px #c7c7c7, 37px 0 0 -8px #c7c7c7, 38px 0 0 -8px #c7c7c7, 39px 0 0 -8px #c7c7c7, 40px 0 0 -8px #c7c7c7, 41px 0 0 -8px #c7c7c7, 42px 0 0 -8px #c7c7c7, 43px 0 0 -8px #c7c7c7, 44px 0 0 -8px #c7c7c7, 45px 0 0 -8px #c7c7c7, 46px 0 0 -8px #c7c7c7, 47px 0 0 -8px #c7c7c7, 48px 0 0 -8px #c7c7c7, 49px 0 0 -8px #c7c7c7, 50px 0 0 -8px #c7c7c7, 51px 0 0 -8px #c7c7c7, 52px 0 0 -8px #c7c7c7, 53px 0 0 -8px #c7c7c7, 54px 0 0 -8px #c7c7c7, 55px 0 0 -8px #c7c7c7, 56px 0 0 -8px #c7c7c7, 57px 0 0 -8px #c7c7c7, 58px 0 0 -8px #c7c7c7, 59px 0 0 -8px #c7c7c7, 60px 0 0 -8px #c7c7c7, 61px 0 0 -8px #c7c7c7, 62px 0 0 -8px #c7c7c7, 63px 0 0 -8px #c7c7c7, 64px 0 0 -8px #c7c7c7, 65px 0 0 -8px #c7c7c7, 66px 0 0 -8px #c7c7c7, 67px 0 0 -8px #c7c7c7, 68px 0 0 -8px #c7c7c7, 69px 0 0 -8px #c7c7c7, 70px 0 0 -8px #c7c7c7, 71px 0 0 -8px #c7c7c7, 72px 0 0 -8px #c7c7c7, 73px 0 0 -8px #c7c7c7, 74px 0 0 -8px #c7c7c7, 75px 0 0 -8px #c7c7c7, 76px 0 0 -8px #c7c7c7, 77px 0 0 -8px #c7c7c7, 78px 0 0 -8px #c7c7c7, 79px 0 0 -8px #c7c7c7, 80px 0 0 -8px #c7c7c7, 81px 0 0 -8px #c7c7c7, 82px 0 0 -8px #c7c7c7, 83px 0 0 -8px #c7c7c7, 84px 0 0 -8px #c7c7c7, 85px 0 0 -8px #c7c7c7, 86px 0 0 -8px #c7c7c7, 87px 0 0 -8px #c7c7c7, 88px 0 0 -8px #c7c7c7, 89px 0 0 -8px #c7c7c7, 90px 0 0 -8px #c7c7c7, 91px 0 0 -8px #c7c7c7, 92px 0 0 -8px #c7c7c7, 93px 0 0 -8px #c7c7c7, 94px 0 0 -8px #c7c7c7, 95px 0 0 -8px #c7c7c7, 96px 0 0 -8px #c7c7c7, 97px 0 0 -8px #c7c7c7, 98px 0 0 -8px #c7c7c7, 99px 0 0 -8px #c7c7c7, 100px 0 0 -8px #c7c7c7, 101px 0 0 -8px #c7c7c7, 102px 0 0 -8px #c7c7c7, 103px 0 0 -8px #c7c7c7, 104px 0 0 -8px #c7c7c7, 105px 0 0 -8px #c7c7c7, 106px 0 0 -8px #c7c7c7, 107px 0 0 -8px #c7c7c7, 108px 0 0 -8px #c7c7c7, 109px 0 0 -8px #c7c7c7, 110px 0 0 -8px #c7c7c7, 111px 0 0 -8px #c7c7c7, 112px 0 0 -8px #c7c7c7, 113px 0 0 -8px #c7c7c7, 114px 0 0 -8px #c7c7c7, 115px 0 0 -8px #c7c7c7, 116px 0 0 -8px #c7c7c7, 117px 0 0 -8px #c7c7c7, 118px 0 0 -8px #c7c7c7, 119px 0 0 -8px #c7c7c7, 120px 0 0 -8px #c7c7c7, 121px 0 0 -8px #c7c7c7, 122px 0 0 -8px #c7c7c7, 123px 0 0 -8px #c7c7c7, 124px 0 0 -8px #c7c7c7, 125px 0 0 -8px #c7c7c7, 126px 0 0 -8px #c7c7c7, 127px 0 0 -8px #c7c7c7, 128px 0 0 -8px #c7c7c7, 129px 0 0 -8px #c7c7c7, 130px 0 0 -8px #c7c7c7, 131px 0 0 -8px #c7c7c7, 132px 0 0 -8px #c7c7c7, 133px 0 0 -8px #c7c7c7, 134px 0 0 -8px #c7c7c7, 135px 0 0 -8px #c7c7c7, 136px 0 0 -8px #c7c7c7, 137px 0 0 -8px #c7c7c7, 138px 0 0 -8px #c7c7c7, 139px 0 0 -8px #c7c7c7, 140px 0 0 -8px #c7c7c7, 141px 0 0 -8px #c7c7c7, 142px 0 0 -8px #c7c7c7, 143px 0 0 -8px #c7c7c7, 144px 0 0 -8px #c7c7c7, 145px 0 0 -8px #c7c7c7, 146px 0 0 -8px #c7c7c7, 147px 0 0 -8px #c7c7c7, 148px 0 0 -8px #c7c7c7, 149px 0 0 -8px #c7c7c7, 150px 0 0 -8px #c7c7c7, 151px 0 0 -8px #c7c7c7, 152px 0 0 -8px #c7c7c7, 153px 0 0 -8px #c7c7c7, 154px 0 0 -8px #c7c7c7, 155px 0 0 -8px #c7c7c7, 156px 0 0 -8px #c7c7c7, 157px 0 0 -8px #c7c7c7, 158px 0 0 -8px #c7c7c7, 159px 0 0 -8px #c7c7c7, 160px 0 0 -8px #c7c7c7, 161px 0 0 -8px #c7c7c7, 162px 0 0 -8px #c7c7c7, 163px 0 0 -8px #c7c7c7, 164px 0 0 -8px #c7c7c7, 165px 0 0 -8px #c7c7c7, 166px 0 0 -8px #c7c7c7, 167px 0 0 -8px #c7c7c7, 168px 0 0 -8px #c7c7c7, 169px 0 0 -8px #c7c7c7, 170px 0 0 -8px #c7c7c7, 171px 0 0 -8px #c7c7c7, 172px 0 0 -8px #c7c7c7, 173px 0 0 -8px #c7c7c7, 174px 0 0 -8px #c7c7c7, 175px 0 0 -8px #c7c7c7, 176px 0 0 -8px #c7c7c7, 177px 0 0 -8px #c7c7c7, 178px 0 0 -8px #c7c7c7, 179px 0 0 -8px #c7c7c7, 180px 0 0 -8px #c7c7c7, 181px 0 0 -8px #c7c7c7, 182px 0 0 -8px #c7c7c7, 183px 0 0 -8px #c7c7c7, 184px 0 0 -8px #c7c7c7, 185px 0 0 -8px #c7c7c7, 186px 0 0 -8px #c7c7c7, 187px 0 0 -8px #c7c7c7, 188px 0 0 -8px #c7c7c7, 189px 0 0 -8px #c7c7c7, 190px 0 0 -8px #c7c7c7, 191px 0 0 -8px #c7c7c7, 192px 0 0 -8px #c7c7c7, 193px 0 0 -8px #c7c7c7, 194px 0 0 -8px #c7c7c7, 195px 0 0 -8px #c7c7c7, 196px 0 0 -8px #c7c7c7, 197px 0 0 -8px #c7c7c7, 198px 0 0 -8px #c7c7c7, 199px 0 0 -8px #c7c7c7, 200px 0 0 -8px #c7c7c7, 201px 0 0 -8px #c7c7c7, 202px 0 0 -8px #c7c7c7, 203px 0 0 -8px #c7c7c7, 204px 0 0 -8px #c7c7c7, 205px 0 0 -8px #c7c7c7, 206px 0 0 -8px #c7c7c7, 207px 0 0 -8px #c7c7c7, 208px 0 0 -8px #c7c7c7, 209px 0 0 -8px #c7c7c7, 210px 0 0 -8px #c7c7c7, 211px 0 0 -8px #c7c7c7, 212px 0 0 -8px #c7c7c7, 213px 0 0 -8px #c7c7c7, 214px 0 0 -8px #c7c7c7, 215px 0 0 -8px #c7c7c7, 216px 0 0 -8px #c7c7c7, 217px 0 0 -8px #c7c7c7, 218px 0 0 -8px #c7c7c7, 219px 0 0 -8px #c7c7c7, 220px 0 0 -8px #c7c7c7, 221px 0 0 -8px #c7c7c7, 222px 0 0 -8px #c7c7c7, 223px 0 0 -8px #c7c7c7, 224px 0 0 -8px #c7c7c7, 225px 0 0 -8px #c7c7c7, 226px 0 0 -8px #c7c7c7, 227px 0 0 -8px #c7c7c7, 228px 0 0 -8px #c7c7c7, 229px 0 0 -8px #c7c7c7, 230px 0 0 -8px #c7c7c7, 231px 0 0 -8px #c7c7c7, 232px 0 0 -8px #c7c7c7, 233px 0 0 -8px #c7c7c7, 234px 0 0 -8px #c7c7c7, 235px 0 0 -8px #c7c7c7, 236px 0 0 -8px #c7c7c7, 237px 0 0 -8px #c7c7c7, 238px 0 0 -8px #c7c7c7, 239px 0 0 -8px #c7c7c7, 240px 0 0 -8px #c7c7c7;
+	  margin-top: -8px;
+	  border: 1px solid #777;
+	}
+	input[type="range"]::-moz-range-track {
+	  width: 240px
+	  height: 2px;
+	  background:#81F7F3;	  
+	}
+	input[type="range"]::-moz-range-thumb {
+	  height: 18px;
+	  width: 28px;
+	  background: #fff;
+	  border-radius: 8px;
+	  border: 1px solid #777;
+	  position: relative;
+	}
+	input[type="range"]::-moz-range-progress {
+	  height: 2px;
+	  background: #e33d44;
+	  border: 0;
+	  margin-top: 0;
+	}
+	
+	.ui-widget-content { border: 0px solid #ccc; background: #ccc  }
+	.ui-widget-header { border: 0px solid #aaaaaa; background: #AD8C42  }
+
+	.ui-slider { position: relative; text-align: left;  }
+	.ui-slider .ui-slider-handle:focus { outline: none; }
+	.ui-slider .ui-slider-handle { height: 5px; width: 5px; position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+	.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 10 10; }
+
+	.ui-slider-horizontal { height: .2em; width: 480px; }
+	.ui-slider-horizontal .ui-slider-handle { top: -.8em; margin-left: -.6em; width: 30px; height: 30px; border: 0; background: url('images/APP_Button_O-S-Front-S30px.png');} 
+	.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%;  }
+	.ui-slider-horizontal .ui-slider-range-min { left: 0;  }
+	.ui-slider-horizontal .ui-slider-range-max { right: 70;}
+	
+	.barIconUnderText {
+		font-size: 16px;
+		font-weight: bold;
+		padding:3px; 
+		border-bottom: 3px solid #ccc; 
+		margin-left:-5px;
+	}
+	</style>
+	<script>
+	$(document).ready(function(){
+		var NewRowLocCnt = 0;
+		var TotalRowCnt = 0;
+		var currRowLocCnt = 0;
+		
+		var dictionary = '{"BlEDevicesFound":[' +
+			'{"ID":"0A", "SN":"000000000001", "bleName":"MAXBook"},' +
+			'{"ID":"0B", "SN":"000000000001", "bleName":"MAXScene"},' +
+			'{"ID":"0B", "SN":"000000000002", "bleName":"MAXScene"},' +
+			'{"ID":"0B", "SN":"000000000003", "bleName":"MAXScene"},' +
+			'{"ID":"14", "SN":"000000000001", "bleName":"MAXLite1"},' +
+			'{"ID":"14", "SN":"000000000002", "bleName":"MAXLite1"},' +
+			'{"ID":"14", "SN":"000000000003", "bleName":"MAXLite1"},' +
+			'{"ID":"16", "SN":"000000000001", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000002", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000003", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000004", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000005", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000006", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000007", "bleName":"MAXLite2"},' +
+			'{"ID":"16", "SN":"000000000008", "bleName":"MAXLite2"},' +
+			'{"ID":"18", "SN":"000000000001", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000002", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000003", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000004", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000005", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000006", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000007", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000008", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000009", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000010", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000011", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000012", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000013", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000014", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000015", "bleName":"MAXLite3"},' +
+			'{"ID":"18", "SN":"000000000016", "bleName":"MAXLite3"}]}';
+
+		obj = JSON.parse(dictionary);
+		
+		$("#MaxDeviceList").lightSlider({
+			loop:false,
+			controls:true,
+			vertical:true,
+			verticalHeight:240,
+			adaptiveHeight:true,
+			keyPress:true
+		});
+        
+		initMAXLite3Page();
+			
+		var deviceIndex = 0;
+		$(".imgSixClass").click(function() {
+			//var btnID = $(this).attr('id'); // $(this) refers to button that was clicked
+			//alert(btnID);
+			//var dBleID = getBleIDBySelection(btnID);
+			//alert(dBleID);
+			//createButtonOnSelection(dBleID);
+			
+			//$("#MaxDeviceList").empty();
+			//for(var i = 0; i < obj.BlEDevicesFound.length; ++i) {
+			//	var bleId = obj.BlEDevicesFound[i].ID;
+			//	if (bleId == dBleID)
+			//	{
+			//		createSubDiv(i);
+			//	}
+			//}
+		});
+		
+
+		function initMAXLite3Page() {
+			$("#MaxLite3Bar1OnOffButton").css('color', '#262626');
+			$("#MaxLite3Bar2OnOffButton").css('color', '#262626');
+			$("#MaxLite3Bar3OnOffButton").css('color', '#262626');
+		}
+		
+		function createSubDiv(i) {
+			var getDiv = document.getElementById("MaxDeviceList");
+			var subDiv = document.createElement("DIV"); 
+			var btnHR = document.createElement("HR");
+			
+			subDiv.id = "div" + i;
+			subDiv.style.height = "60px";
+			subDiv.style.width = "100%";
+			//console.log("subDiv.id =" + subDiv.id);
+			btnHR.className = "hrSt";
+			
+			getDiv.appendChild(subDiv);
+			getDiv.appendChild(btnHR);
+		}
+
+		$('.popr').popr();
+		$('input[placeholder]').placeholderLabel();
+		$( "#menubtn" ).hover(function() {
+			//alert("menubtn on hover!");
+			$("#selectable").show();
+		});
+		
+		$( "#selectable" ).selectable({
+		  stop: function() {
+			var result = $( "#select-result" ).empty();
+			$( ".ui-selected", this ).each(function() {
+			  var index = $( "#selectable li" ).index( this );
+			  var liText = $(this).html(); // gets innerHTML of clicked li
+			  //alert($(this).val());
+			  var liID = $(this).attr('id');
+			  //alert(ID);
+			  var liValue = $(this).val();
+			  result.append( " #" + ( index + 1 ) + ", liText=" + liText + ", liID =" + liID + ", liValue =" + liValue);
+			});
+		  }
+		});	
+		
+		function getBleIDBySelection(btnID){
+			var BleID = "";
+			switch (btnID) {
+				case "MAXBook_img":
+					BleID = "0A";
+					break;
+				case "MAXScene_img":
+					BleID = "0B";
+					break;
+				case "MAXAir_img":
+					BleID = "13";
+					break;
+				case "MAXLite1_img":
+					BleID = "14";
+					break;
+				case "MAXLite2_img":
+					BleID = "16";
+					break;
+				case "MAXLite3_img":
+					BleID = "18";
+					break;
+			}
+			return BleID;		
+		}
+	
+	
+		$( "#MAXLite3Slider1").slider({
+			range: "min",
+			value: 0,
+			min: 0,
+			max: 100,
+			step: 10,
+			slide: function( event, ui )  {
+				$( "#MaxLiteBar1Progress" ).val( ui.value + "%" );
+				//console.log( "#MaxLiteBar1Progress val=" + ui.value );
+				if (ui.value <= 1)
+				{
+					$("#MaxLite3Bar1OnOffButton").css('color', '#262626'); 
+					$("#MAXLite3Slider1OnOffText").css('color', '#262626');
+					$("#MAXLite3Slider1OnOffText").html('&nbsp;OFF&nbsp;');				
+					$('#MAXLite3Slider1OnOff_Img').attr('src', 'images/APP_Button_Off.png');
+				}
+				else
+				{
+					$("#MaxLite3Bar1OnOffButton").css('color', '#AD8C42');
+					$("#MAXLite3Slider1OnOffText").css('color', '#AD8C42');
+					$("#MAXLite3Slider1OnOffText").html('&nbsp;&nbsp;ON&nbsp;');				
+					$('#MAXLite3Slider1OnOff_Img').attr('src', 'images/APP_Button_On.png');
+				}
+				//update();
+			}
+		});
+
+		$( "#MAXLite3Slider2").slider({
+			range: "min",
+			value: 0,
+			min: 0,
+			max: 100,
+			step: 10,
+			slide: function( event, ui )  {
+				$( "#MaxLiteBar2Progress" ).val( ui.value + "%" );
+				//console.log( "#MaxLiteBar2Progress val=" + ui.value );
+				if (ui.value <= 1)
+				{
+					$("#MaxLite3Bar2OnOffButton").css('color', '#262626'); 
+					$("#MAXLite3Slider2OnOffText").css('color', '#262626');
+					$("#MAXLite3Slider2OnOffText").html('&nbsp;OFF&nbsp;');				
+					$('#MAXLite3Slider2OnOff_Img').attr('src', 'images/APP_Button_Off.png');
+				}
+				else
+				{
+					$("#MaxLite3Bar2OnOffButton").css('color', '#AD8C42');
+					$("#MAXLite3Slider2OnOffText").css('color', '#AD8C42');
+					$("#MAXLite3Slider2OnOffText").html('&nbsp;&nbsp;ON&nbsp;');				
+					$('#MAXLite3Slider2OnOff_Img').attr('src', 'images/APP_Button_On.png');
+				}
+				//update();
+			}
+		});
+		
+		$( "#MAXLite3Slider3").slider({
+			range: "min",
+			value: 0,
+			min: 0,
+			max: 100,
+			step: 10,
+			slide: function( event, ui )  {
+				$( "#MaxLiteBar3Progress" ).val( ui.value + "%" );
+				//console.log( "#MaxLiteBar3Progress val=" + ui.value );
+				if (ui.value <= 1)
+				{
+					$("#MaxLite3Bar3OnOffButton").css('color', '#262626'); 
+					$("#MAXLite3Slider3OnOffText").css('color', '#262626');
+					$("#MAXLite3Slider3OnOffText").html('&nbsp;OFF&nbsp;');				
+					$('#MAXLite3Slider3OnOff_Img').attr('src', 'images/APP_Button_Off.png');
+				}
+				else
+				{
+					$("#MaxLite3Bar3OnOffButton").css('color', '#AD8C42');  
+					$("#MAXLite3Slider3OnOffText").css('color', '#AD8C42');
+					$("#MAXLite3Slider3OnOffText").html('&nbsp;&nbsp;ON&nbsp;');				
+					$('#MAXLite3Slider3OnOff_Img').attr('src', 'images/APP_Button_On.png');
+				}
+				//update(); 
+			}
+		});
+		
+		$( "#MaxLiteBar1Progress" ).val( $( "#MAXLite3Slider1" ).slider( "value" ) + "%");
+		$( "#MaxLiteBar2Progress" ).val( $( "#MAXLite3Slider2" ).slider( "value" ) + "%");
+		$( "#MaxLiteBar3Progress" ).val( $( "#MAXLite3Slider3" ).slider( "value" ) + "%");
+		
+				
+		$('#btnMAXLite3_1').click(function() {
+			window.location.href = 'MAXLite3DeviceSettings.html';
+			return false;
+			//alert("2313");
+		});
+		
+	
+	});
+	</script>
+</head>
+<body>
+	<div id="mainContainer" >	
+		<div id="TopContainer" style="">
+			<div style="padding-bottom: 5px; align-self: flex-end;">LocationA | Julie&nbsp;</div>
+			<div class="inner" style="padding: 15px 15px 8px 15px; float:right;">
+				<div class="popr" data-id="1"><img id="menubtn" src="images/APP_Button_Menu.png" width="50px" height="40px"></div>
+			</div>
+			<div id="SubDiv" class="">
+				<div class="popr-box" data-box-id="1">
+					<a href="Login.html"><div class="popr-item">登出</div></a>
+					<a href="DeviceIDSettings.html"><div class="popr-item" id="feugait">顯示設備ID</div></a>
+					<a href="DeviceSystemStatusSettings.html"><div class="popr-item">顯示系統狀態</div></a>
+					<a href="ResetPassword.html"><div class="popr-item">重設密碼</div></a>
+					<a href="$loc"><div class="popr-item">權限設定</div></a>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div  class="deviceContent">
+			<div class="horizontal div1" style="border: 1px solid transparent;" >
+				<div class="vertical v1"  style="padding: 2px; width:45%;border: 1px solid transparent; margin: 0, auto;background-color: transparent;">
+					<div class="horizontal div2" style="border: 1px solid transparent; margin-left:-10px;" >
+						<div class="vertical v2a"  style="width:50%;border: 1px solid #ccc; margin:0px; left:0;"> 					
+							<br class="break1" />
+							<div class="horizontal Row1" style="border: 1px solid transparent; width:30%;height:35%; margin: 0 auto;top:5px; padding:5px; position:relative;" >
+								<div class="imgWrapper"  style="border: 1px solid transparent; position:relative;float:left;">	
+									<img class="imgSixClass" id="MAXLite1_img" src="images/WEB-c_device_btn_ml1_off-s.png" width="90px" height="90px" style="padding:5px; border:0;" /> 
+								</div>
+								<div class=""  style="border: 5px solid transparent; position:relative;float:left;">
+								</div>
+								<div class="imgWrapper"  style="border: 1px solid transparent; position:relative;float:left;">	
+									<img class="imgSixClass" id="MAXLite2_img" src="images/WEB-c_device_btn_ml2_off-s.png" width="90px" height="90px" style="padding:5px;border:0; " /> 
+								</div>
+							</div>
+							<div class="horizontal Row2" style="border: 1px solid transparent; width:30%;height:35%; margin: 0 auto;top:5px; padding:5px; position:relative;" >
+								<div class="imgWrapper"  style="border: 1px solid transparent; position:relative;float:left;">	
+									<img class="imgSixClass" id="MAXLite3_img" src="images/WEB-c_device_btn_ml3_on-s.png" width="90px" height="90px" style="padding:5px; border:0;" /> 
+								</div>
+								<div class=""  style="border: 5px solid transparent; position:relative;float:left;">
+								</div>
+								<div class="imgWrapper"  style="border: 1px solid transparent; position:relative;float:left;">	
+									<img class="imgSixClass" id="MAXAir_img" src="images/WEB-c_device_btn_ma_off-s.png" width="90px" height="90px" style="padding:5px;border:0; " /> 
+								</div>
+							</div>
+							<div class="horizontal Row2" style="border: 1px solid transparent; width:30%;height:35%; margin: 0 auto;top:5px; position:relative;" >
+								<div class="imgWrapper"  style="border: 1px solid transparent; position:relative;float:left;">	
+									<img class="imgSixClass" id="MAXScene_img" src="images/WEB-c_device_btn_ms_off-s.png" width="90px" height="90px" style="padding:5px;" /> 
+								</div>
+								<div class=""  style="border: 5px solid transparent; position:relative;float:left;">
+								</div>
+								<div class="imgWrapper"  style="border: 1px solid transparent; position:relative;float:left;">	
+									<img class="imgSixClass" id="MAXBook_img" src="images/WEB-c_device_btn_mb_off-s.png" width="90px" height="90px" style="padding:5px;left:5px;" /> 
+								</div>
+							</div>	
+							<br />
+						</div> 			
+						<div class="vertical v2b"  style="width:450px; padding: 2px; border: 1px solid transparent;"> 	
+							<div class="content" style="height:10%; border: 1px solid transparent; ">
+								<input id="SearchDevice" type="text" maxlength="40" placeholder="Search Device" alt="Search Device" required />
+							</div> 
+							<br />
+							<div class="horizontal Row1" style="border: 1px solid #ccc; width:100%;height:90%; margin: 0 auto;top:5px; background:transparent; " >
+								<div id="MaxDeviceList" class="content-slider">	
+								
+									<div id="div15" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_1" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</span>
+										<br> ID: 18<br>SN: 000000000001
+										</button><button id="btnMAXLite3Edit_1" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_1" class="btnSearch" style="height: 60px; width: 50px;">
+										</button>
+										<hr class="hrSt">
+									</div>
+									<div id="div16" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_2" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</span>
+										<br> ID: 18<br>SN: 000000000002</button>&nbsp;&nbsp;<button id="btnMAXLite3Edit_2" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_2" class="btnSearch" style="height: 60px; width: 50px;"></button>
+										<hr class="hrSt">
+									</div>	
+									<div id="div17" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_3" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</span>
+										<br> ID: 18<br>SN: 000000000003</button><button id="btnMAXLite3Edit_2" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_2" class="btnSearch" style="height: 60px; width: 50px;"></button>
+										<hr class="hrSt">		
+									</div>		
+									<div id="div18" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_4" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</span>
+										<br> ID: 18<br>SN: 000000000004</button><button id="btnMAXLite3Edit_2" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_2" class="btnSearch" style="height: 60px; width: 50px;"></button>
+										<hr class="hrSt">				
+									</div>
+									<div id="div18" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_5" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</span>
+										<br> ID: 18<br>SN: 000000000005</button><button id="btnMAXLite3Edit_2" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_2" class="btnSearch" style="height: 60px; width: 50px;"></button>
+										<hr class="hrSt">				
+									</div>	
+									<div id="div18" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_6" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6</span>
+										<br> ID: 18<br>SN: 000000000006</button><button id="btnMAXLite3Edit_2" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_2" class="btnSearch" style="height: 60px; width: 50px;"></button>
+										<hr class="hrSt">				
+									</div>
+									<div id="div18" style="height: 60px; width: 100%;">
+										<button id="btnMAXLite3_7" class="boxSt" style="height: 60px; width: 60%;">
+										<span style="font-size:20px;font-weight: bold;">MAXLite3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</span>
+										<br> ID: 18<br>SN: 000000000007</button><button id="btnMAXLite3Edit_2" class="btnRenameEdit" style="height: 60px; width: 20%;"></button><button id="btnMAXLite3Search_2" class="btnSearch" style="height: 60px; width: 50px;"></button>
+										<hr class="hrSt">				
+									</div>
+								
+								</div>
+								<br />
+							</div>							
+						</div> 
+					</div>  
+					<div class="horizontal div3" style="border: 1px solid transparent;" >
+						<img class="" id="Floorplan_img" src="images/floorplan.jpg" width="95%" height="400px" style="padding:5px;left:5px;" /> 
+					</div> 
+				</div>  
+				<div class="vertical v2"  style="width:50%;border: 1px solid purple; margin: 0, auto;background-color: transparent;">
+					<div class="horizontal div1" style="border: 1px solid transparent;" >
+						<div class="vertical"  style="border: 1px solid transparent; margin: 0, auto;background-color: transparent;">.
+							<br />
+							<!--<div class="subTitleDiv" style="padding: 0px 0px 0px 260px; margin: 0, auto;" >
+								<label for="MaxLiteBar1Progress">CH1 (10 increments):</label>
+								<input type="text" id="MaxLiteBar1Progress" readonly style="border:0; background-color: transparent; color:#AD8C42; font-size: 24px; font-weight:bold;">
+								<br /> 
+							</div>-->
+							<div class="horizontal subdiv1" style="border: 1px solid transparent;width: 750px;" >
+								<div id="MaxLite3Bar1OnOffButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+									CH1
+								</div>	
+								<div class="vertical" style="width: 72px;" >	
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+									<div id="MAXLite3Slider1">
+									</div>
+								</div>
+							</div>		
+							<br />
+							<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 7px;" >
+								</div>	
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXLite3Slider1OnOff_Img" src="images/APP_Button_Off.png"  width="55" height="55" style="padding: 0px;" /> 			
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXAirTimeSetting_Img" src="images/APP_Button_Time-ON.png"  width="55" height="55" /> 
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:23%; padding: 10px;" >
+									<img id="MAXAirFlowVolumeSetting_Img" src="images/APP_Button_BrightnessT-On.png"  width="55" height="55" /> 
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXAirFreshAirSetting_Img" src="images/APP_Button_ColorWheel.png"  width="55" height="55" /> 
+								</div>		
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 10px;" >
+								</div>
+							</div>		
+							<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 7px;" >
+								</div>	
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:7%; padding: 10px;" >
+									<span id="MAXLite3Slider1OnOffText" width="10%" height="45"  class="barIconUnderText" style="">&nbsp;OFF&nbsp;</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:9%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:12%; padding: 10px;" >
+									<span  width="11" height="45"  class="barIconUnderText" style="">Timing&nbsp;(hrs)</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:6%; padding: 10px;" >							
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:15%; padding: 10px;" >
+									<span  width="10%" height="45"  class="barIconUnderText" style="">Brightness&nbsp;(%)</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:4%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:14%; padding: 10px;" >
+									<span  width="8%" height="45"  class="barIconUnderText" style="">CT Setting %</span>
+								</div>		
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:6%; padding: 1px;" >
+								</div>
+							</div>
+							<br /><br /><br />
+							<!-- <div class="subTitleDiv" style="padding: 0px 0px 0px 260px; margin: 0, auto;" >
+								<label for="MaxLiteBar2Progress">CH2 (10 increments):</label>
+								<input type="text" id="MaxLiteBar2Progress" readonly style="border:0; background-color: transparent; color:#AD8C42; font-size: 24px; font-weight:bold;">			
+								<br />  
+							</div>-->
+							<div class="horizontal subdiv2" style="border: 1px solid transparent;" >
+								<div id="MaxLite3Bar2OnOffButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+									CH2
+								</div>	
+								<div class="vertical" style="width: 72px;" >	
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+									<div id="MAXLite3Slider2">
+									</div>
+								</div>
+							</div>
+							<br /><br />
+							<br />
+							<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 7px;" >
+								</div>	
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXLite3Slider2OnOff_Img" src="images/APP_Button_Off.png"  width="55" height="55" style="padding: 0px;" /> 			
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXLite3Slider2Timing_Img" src="images/APP_Button_Time-ON.png"  width="55" height="55" /> 
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:23%; padding: 10px;" >
+									<img id="MAXAirFlowVolumeSetting_Img" src="images/APP_Button_BrightnessT-On.png"  width="55" height="55" /> 
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXAirFreshAirSetting_Img" src="images/APP_Button_ColorWheel.png"  width="55" height="55" /> 
+								</div>		
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 10px;" >
+								</div>
+							</div>		
+							<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 7px;" >
+								</div>	
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:7%; padding: 10px;" >
+									<span id="MAXLite3Slider2OnOffText" width="10%" height="45"  class="barIconUnderText" style="">&nbsp;OFF&nbsp;</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:9%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:12%; padding: 10px;" >
+									<span  width="11" height="45"  class="barIconUnderText" style="">Timing&nbsp;(hrs)</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:6%; padding: 10px;" >							
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:15%; padding: 10px;" >
+									<span  width="10%" height="45"  class="barIconUnderText" style="">Brightness&nbsp;(%)</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:4%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:14%; padding: 10px;" >
+									<span  width="8%" height="45"  class="barIconUnderText" style="">CT Setting %</span>
+								</div>		
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:6%; padding: 1px;" >
+								</div>
+							</div>										
+							<br /><br /><br />
+							<!--<div class="subTitleDiv" style="padding: 0px 0px 0px 260px; margin: 0, auto;" >
+								<label for="MaxLiteBar3Progress">CH3 (10 increments):</label>
+								<input type="text" id="MaxLiteBar3Progress" readonly style="border:0; background-color: transparent; color:#AD8C42; font-size: 24px; font-weight:bold;">			
+								<br />
+							</div>-->
+							<div class="horizontal subdiv3" style="border: 1px solid transparent;" >
+								<div id="MaxLite3Bar3OnOffButton" class="vertical"  style="font-size: 24px; font-weight: bold; color:#AD8C42; margin: 0, auto;">
+									CH3
+								</div>	
+								<div class="vertical" style="width: 72px;" >	
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+									<div id="MAXLite3Slider3">
+									</div>
+								</div>				
+							</div>
+							<br /><br />
+							<br />
+							<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 7px;" >
+								</div>	
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXLite3Slider3OnOff_Img" src="images/APP_Button_Off.png"  width="55" height="55" style="padding: 0px;" /> 			
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXLite3Slider3Timing_Img" src="images/APP_Button_Time-ON.png"  width="55" height="55" /> 
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:23%; padding: 10px;" >
+									<img id="MAXAirFlowVolumeSetting_Img" src="images/APP_Button_BrightnessT-On.png"  width="55" height="55" /> 
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:8%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:23%; padding: 10px;" >
+									<img id="MAXAirFreshAirSetting_Img" src="images/APP_Button_ColorWheel.png"  width="55" height="55" /> 
+								</div>		
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 10px;" >
+								</div>
+							</div>		
+							<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:1%; padding: 7px;" >
+								</div>	
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:7%; padding: 10px;" >
+									<span id="MAXLite3Slider3OnOffText" width="10%" height="45"  class="barIconUnderText" style="">&nbsp;OFF&nbsp;</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:9%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:12%; padding: 10px;" >
+									<span  width="11" height="45"  class="barIconUnderText" style="">Timing&nbsp;(hrs)</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:6%; padding: 10px;" >							
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:15%; padding: 10px;" >
+									<span  width="10%" height="45"  class="barIconUnderText" style="">Brightness&nbsp;(%)</span>
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:4%; padding: 10px;" >
+								</div>
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:14%; padding: 10px;" >
+									<span  width="8%" height="45"  class="barIconUnderText" style="">CT Setting %</span>
+								</div>		
+								<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:6%; padding: 1px;" >
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>	
+
+		</div>
+		<div id="BottomContainer" style="width:100%; height: 50px;border: 1px solid transparent;">
+		</div>
+	</div>
+</body>
+</html>

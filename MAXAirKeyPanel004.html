@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Rexlite Home Page</title>
+
+    <script language="JavaScript" type="text/javascript" src="js/jquery-1.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/jquery-1.8.ui.min.js"></script>
+	
+	<style>
+		html {
+			height:80%;
+		}
+		body {
+			background-color: #131313;
+		}
+		.mainContent {
+			background-color: #blue; /* blue */
+
+			margin: auto;
+			width: 415px;
+			height: 560px;	
+			border: 1px solid red; 
+			 padding-top: 45px; 
+			/* padding: 65px 60px 5px 60px;  */ /*padding-top, padding-right, padding-bottom, padding-left */
+		}
+
+		div.horizontal {
+			display: flex;
+			justify-content: center;
+		}
+
+		div.vertical {
+		    padding: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.MAXAirKeyContent {
+			width: 480px;
+		}
+		
+		.MAXAirKeyTopContentDiv {
+			display: block; 
+			margin: 0 auto; 
+			width: 450px;
+			background-color: #0C0C0C;
+			color: #AD8C41; 
+			font-size: 32px;
+			font-weight: bold;
+			border: 1px solid red; 
+		}
+		.MAXAirKeyMainContentDiv {
+			background-color: #323232;
+			display: block; 
+			margin: 0 auto; 
+			width: 300px;
+			font-size: 42px;
+			font-weight: bold;
+			padding: 0px 40px 0px 40px;  */ /*padding-top, padding-right, padding-bottom, padding-left */
+		}
+		.subTitleDiv {
+			display: block; 
+			margin: 0 auto; 
+			color: #AD8C41; 
+			font-size: 32px;
+			font-weight: bold;
+		}
+		.bottomDiv { /* this css will ensure the div stays on the bottom of page all the time */
+			background-color: #131313;
+			height: 20px;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			padding-bottom: 5px;
+		}
+		.break{
+			display:block;
+			margin:0 0 0.3em;
+		}
+	</style>
+	<style>
+    .ui-widget-content { border: 0px solid #ccc; background: #262626  }
+    .ui-widget-header { border: 0px solid #aaaaaa; background: #AD8C42  }
+
+    .ui-slider { position: relative; text-align: left; }
+    .ui-slider .ui-slider-handle { height: 5px; width: 5px; position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+    .ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 10 10; }
+
+    .ui-slider-horizontal { height: .2em; width: 350px; }
+    .ui-slider-horizontal .ui-slider-handle { top: -.8em; margin-left: -.6em; width: 30px; height: 30px; border: 0; background: url('images/APP_Button_O-S-Front-S30px.png');} 
+    .ui-slider-horizontal .ui-slider-range { top: 0; height: 100%;  }
+    .ui-slider-horizontal .ui-slider-range-min { left: 0;  }
+    .ui-slider-horizontal .ui-slider-range-max { right: 70;}
+	</style>
+	<script>
+	$(document).ready(function() {
+
+
+		
+	});
+	</script>
+</head>
+<body>
+<div id="mainContent" class="">	
+	<div id="MaxSceneTop" class="MaxSceneTopDiv">
+		<div id="MaxSceneBackBtn" style="float:left;">
+			<a href="index.html">
+				<img border="0" alt="Back" src="images/APP_Button_Back.png" width="50px" height="40px">
+			</a>
+		</div>
+		<div id="MaxSceneMenuBtn" style="float:right;">
+			<a href="index.html">
+				<img border="0" alt="Menu" src="images/APP_Button_Menu.png" width="50px" height="40px">
+			</a>
+		</div> 
+	</div>
+    <br /><br /><br /><br />
+	<div id="MAXAirKeyContent" class="MAXAirKeyTopContentDiv"> <!--begin subContent  -->
+	
+		<div class="horizontal div1" style="border: 1px solid transparent;" >
+			<div class="vertical"  style="border: 1px solid transparent; margin: 0, auto;">
+				<div class="subTitleDiv" style="" >
+					<img id="MAXAirEdit_img" src="images/APP_Button_Rename.png" width="25" height="25"  /> 
+					&nbsp; &nbsp;客廳空調 &nbsp;&nbsp; 
+				</div>
+				<span class="break"></span>
+				<div class="MAXAirKeyMainContentDiv" style="display: block; margin: 0 auto; " ><!--begin MAXAirKeyMainContentDiv  -->
+					<br />
+					<div class="subTitleDiv" style="margin: 0, auto;" >
+						<span style="font-size: 18px; ">Current Temperature<span/>
+						<br /><br />
+					</div>
+					<div class="horizontal currTempDisplayDiv" style="border: 1px solid transparent;" >
+						<div class="horizontal d1"  style="font-size: 62px;  float: right;border: 1px solid transparent;margin: 0, auto;">
+							&nbsp;&nbsp;28<span style="font-size: 24px;"><sup>&#8451;</sup></span>&nbsp;&nbsp;
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="3" height="35" /> 
+						</div>
+						<div class="horizontal d2"  style="font-size: 62px;; border: 1px solid transparent; margin: 0, auto;">
+							&nbsp;&nbsp;82<span style="font-size: 24px;"><sup>&#8457;</sup></span>&nbsp;&nbsp;
+						</div>
+					</div>
+					<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;" >
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;  " >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Cool-ON.png"  width="35" height="35"  /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;" >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Hot-OFF.png"  width="35" height="35" /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Fan-OFF.png"  width="35" height="35" /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Dehumidify-OFF.png"  width="35" height="35" /> 
+						</div>
+					</div>	
+				</div><!--ending MAXAirKeyMainContentDiv  -->
+			    <span class="break"></span>
+				<div class="MAXAirKeyMainContentDiv" style="display: block; margin: 0 auto; " >
+					<br />
+					<div class="horizontal currTempDisplayDiv" style="border: 1px solid transparent;" >
+						<div class="horizontal d1"  style="font-size: 62px;  float: right;border: 1px solid transparent;margin: 0, auto;">
+			
+							<span style="font-size: 18px;text-align: left;">Set Temp</span>&nbsp;&nbsp;&nbsp;
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Bar-Vertical-ON.png" style="width: 1px; height: 30px; visibility: hidden;" /> 
+						</div>
+						<div class="horizontal d2"  style="font-size: 62px;; border: 1px solid transparent; margin: 0, auto;">
+							<span style="font-size: 18px;">Remaining Time</span>
+						</div>
+					</div>
+					
+					<div class="horizontal currTempDisplayDiv" style="border: 1px solid transparent;" >
+						<div class="horizontal d1"  style="font-size: 62px;  float: right;border: 1px solid transparent;margin: 0, auto;">
+							&nbsp;&nbsp;86<span style="font-size: 24px;"><sup>&#8451;</sup></span>&nbsp;&nbsp;
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; " >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Bar-Vertical-ON.png"  width="3" height="35" /> 
+						</div>
+						<div class="horizontal d2"  style="font-size: 62px;; border: 1px solid transparent; margin: 0, auto;">
+							&nbsp;&nbsp;&nbsp;8<span style="font-size: 24px;"><sub>hr</sub></span>&nbsp;&nbsp;&nbsp;
+						</div>
+					</div>
+					<div class="horizontal currAirSelectionDiv" style="border: 1px solid transparent;padding: 0px 30px 0px 30px;" >
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:35px; padding: 10px;" >
+							<img id="Vertical_Row2_img" src="images/APP_Button_TP-ING.png"  width="35" height="35" style="padding: 0px;" /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:35px; padding: 10px;" >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Time-ON.png"  width="35" height="35" /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:35px; padding: 10px;" >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Air_volume-ON.png"  width="35" height="35" /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto; width:35px; padding: 10px;" >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Fresh-ON.png"  width="35" height="35" /> 
+						</div>
+						<div class="vertical" style="border: 1px solid transparent;  margin: 0, auto;width:35px; padding: 10px;" >
+							<img id="Vertical_Row2_img" src="images/APP_Button_Sleep-ON.png"  width="35" height="35" /> 
+						</div>
+					</div>	
+					<div class="horizontal sliderdiv1" style="border: 1px solid transparent;" >
+						<div id="MAXAirSlider">
+						</div>
+					</div>
+					<span class="break"></span>
+				</div>	
+			</div>	
+		    
+
+		</div>
+		<span class="break"></span>
+		<br /><br />
+
+	
+	</div> <!--ending subContent  -->
+	<br /><br />
+	<div id="bottomDiv" class="bottomDiv">
+		<a href="MAXLiTE1.html">
+			<img src="images/APP_Button_REXLiTE.png" width="280" height="12" />
+		</a>
+	</div>
+</div>
+</body>
+</html>

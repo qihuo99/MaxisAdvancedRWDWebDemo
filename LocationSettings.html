@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Location Home Page</title>
+	<link type="text/css" rel="stylesheet" href="jquery-ui-themes-1.12.1/themes/smoothness/jquery-ui.css"/>
+	<script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="popr/popr.css">
+	<script type="text/javascript" src="popr/popr.js"></script>
+	
+	<style>
+		html {
+			height: 100%;
+			width: 100%;
+			padding : 0;
+			margin: 0;
+		}
+		body {
+			background-color: transparent;
+			margin: 0px;
+		}
+		.mainContent .mainContentTop {
+			background: transparent;
+			border: 1px solid transparent;
+			padding: 0px;
+			margin-bottom: 10px;	
+		}
+		div.horizontal {
+			display: flex;
+			justify-content: center;
+		}
+		div.vertical {
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		div.vertical .btn-holder  {
+			background: lightblue;
+			border: 6px solid gold; 
+			overflow: hidden;			
+			max-width: 140px;
+			max-height: 140px;
+			width: 140px;
+			height: 140px;
+			padding: 0px 0px 0px 22px;
+			justify-content: flex-end;
+			display: inline-flex;
+			text-align:center;
+		}
+		div.vertical .btn-holder-new  {
+			background: lightblue;
+			border: 6px solid gold; 
+			overflow: hidden;			
+			max-width: 140px;
+			max-height: 140px;
+			width: 140px;
+			height: 140px;
+			padding: 0px 0px 0px 22px;
+			justify-content: flex-end;
+			display: inline-flex;
+			text-align:center;
+		}
+		
+		.button  {
+			background-color: yellow;
+		}
+		.button:hover { 
+			cursor:pointer;
+			background-color: green;
+		}
+		.inputContent {
+			width: 150px;
+		}
+		.mainContainer hr {
+			margin: 0px -20px 0px;
+			border: 0;
+			border-top: 1px solid #c9c7c7;
+		}
+		.content {
+			display: block; 
+			max-width: 900px;
+			margin: 0 auto;
+		}
+		input {
+			border: 1px solid #ccc;
+			padding: 10px;
+			outline: none;
+			font-size: 14px;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			width: 60%;
+			margin: 0px;
+		}
+		#TopContainer {    
+			display: flex; 
+			justify-content: flex-end;
+			border: solid 1px transparent;
+		}
+
+	</style>
+	<script>
+	$(document).ready(function(){
+		var NewRowLocCnt = 0;
+		var TotalRowCnt = 0;
+		var currRowLocCnt = 0;
+		var getTotalPageLocCount = 0;
+		var RowLocCntModVal = 0;
+		var locTextSelected = "";
+		var getLocContentDiv = document.getElementById("LocContent");
+
+	
+		$('.popr').popr();
+		$( "#menubtn" ).hover(function() {
+			//alert("menubtn on hover!");
+			$("#selectable").show();
+		});
+		
+	    $( "#selectable" ).selectable({
+		  stop: function() {
+			var result = $( "#select-result" ).empty();
+			$( ".ui-selected", this ).each(function() {
+			  var index = $( "#selectable li" ).index( this );
+			  var liText = $(this).html(); // gets innerHTML of clicked li
+			  //alert($(this).val());
+			  var liID = $(this).attr('id');
+			  //alert(ID);
+			  var liValue = $(this).val();
+			  result.append( " #" + ( index + 1 ) + ", liText=" + liText + ", liID =" + liID + ", liValue =" + liValue);
+			});
+		  }
+		});	
+
+		checkLocCount();
+
+		function checkLocCount()
+		{
+		    console.log("============================================================= " );
+			TotalRowCnt = getRowCnt();
+			currRowLocCnt = getEachRowNewLocCnt();
+			console.log("currRowLocCnt = " + currRowLocCnt);
+			if (TotalRowCnt == 1 && currRowLocCnt == 0){
+				console.log("Need to add the AddSpace default + 1 !!");
+				currRowLocCnt++;
+			}
+			console.log("latest currRowLocCnt = " + currRowLocCnt);
+			RowLocCntModVal = currRowLocCnt % 4;
+			
+			console.log("RowLocCntModVal = " + RowLocCntModVal);
+			console.log("TotalRowCnt = " + TotalRowCnt);
+	
+			getTotalPageLocCount = getTotalPageLocCnt();
+			console.log("getTotalPageLocCount = " + getTotalPageLocCount);		
+			console.log("----------------------------------------------------------------------- " );
+		}	
+		
+		$( "#addLocBtn" ).click(function() {
+			addLoc();
+			console.log("locTextSelected = " + locTextSelected);
+			var SelectedInput = document.getElementById(locTextSelected);
+			//SelectedInput.focus();
+			//checkLocCount();
+
+		});	
+			
+		function addLoc() {		
+			//alert("addloc function! ");
+			console.log("RowLocCntModVal = " + RowLocCntModVal);
+			if (RowLocCntModVal == 0 )
+			{
+			    console.log("Need to create a new row!!"  );
+				console.log("************************!!"  );
+				var locRow = document.createElement('div');
+				var btn = document.createElement("BUTTON");
+				//TotalRowCnt++;
+			}
+			else 
+			{   
+				var getAppendingRowDivID = "locRow" + TotalRowCnt;
+				console.log("getAppendingRowDivID = " + getAppendingRowDivID);
+				var getLocDiv = document.getElementById(getAppendingRowDivID);
+				var newLocDiv = document.createElement("DIV"); 
+				var newLocPrefix = "Row" + TotalRowCnt + "Loc";  // + currRowLocCnt
+				console.log("newLocPrefix 1 = " + newLocPrefix);
+				
+				newLocDiv.id = newLocPrefix + currRowLocCnt;
+				newLocDiv.style.height = "205px";
+				newLocDiv.style.width = "180px";
+				newLocDiv.style['float'] = 'right';
+				newLocDiv.style.backgroundColor = "transparent";
+				newLocDiv.className = "vertical";
+				console.log("newLocDiv.id 0a = " + newLocDiv.id);
+				
+				var newLocButtonHolderDiv = document.createElement("DIV"); 
+				newLocButtonHolderDiv.id =  "BtnHolder_" + getAppendingRowDivID + "_Loc" + currRowLocCnt;
+				newLocButtonHolderDiv.className = "vertical btn-holder";
+				var locBtn = document.createElement("BUTTON");
+				locBtn.id = "Btn_" + newLocDiv.id ;
+				locBtn.className = "button";
+				locBtn.innerHTML = "Update Loc";
+				locBtn.style.width = "100px";
+				console.log("locBtn.id = " + locBtn.id);
+				
+				var newLocRenameTextDiv = document.createElement("DIV"); 
+				newLocRenameTextDiv.id = "Rename_" + getAppendingRowDivID + "_Loc" + currRowLocCnt ;
+				newLocRenameTextDiv.style.backgroundColor = "white";;
+				newLocRenameTextDiv.innerHTML = "";
+				newLocRenameTextDiv.style.width = "100px";
+				
+				var locInput = document.createElement("input");
+				var inputID = "Textbox_" + getAppendingRowDivID + "_Loc" + currRowLocCnt;
+				locTextSelected = inputID;
+				console.log("inputID = " + inputID);
+				locInput.setAttribute('type', 'text');
+				locInput.setAttribute('id', inputID);
+				locInput.setAttribute('placeholder', 'New Location.....');
+				locInput.className = "inputContent";
+				locInput.style.backgroundColor = "lightgray";
+
+				//var textbox = document.getElementById(inputID);
+				
+				// 3. Add click event handler
+				locBtn.addEventListener ("click", function() {
+					alert(inputID + " has been updated!");
+					//console.log("SelectedInput InnerHTML = " + SelectedInput.innerHTML );
+					//getSelectedRenameText = newLocDiv.id + "_Rename";
+					
+					//$(inputID).focus(function() { 
+					//  alert(inputID);
+					//  this.select(); 
+					//});
+					//SelectedInput.select();  //select().
+					//SelectedInput.focus();  //select().
+					//console.log("RenameTextSelected = " + RenameTextSelected);
+					//RenameTextSelected.focus();
+					
+				});
+				
+				//getLocDiv.appendChild(newLocDiv);
+				var getBtnHolderDiv = document.getElementById(newLocButtonHolderDiv.id);
+				var newBreak = document.createElement("BR");
+				
+				console.log("newLocDiv.id 3 = " + newLocDiv.id);
+				getLocDiv.prepend(newLocDiv);
+				newLocDiv.appendChild(newLocButtonHolderDiv);
+				newLocButtonHolderDiv.appendChild(locBtn);
+				newLocDiv.appendChild(newBreak);
+				newLocDiv.appendChild(newLocRenameTextDiv);
+				newLocRenameTextDiv.appendChild(locInput);
+				
+				currRowLocCnt++;
+			}
+		}
+			
+		function getEachRowNewLocCnt(){
+			//this will get the initial row count, which should be 1 by default
+			//var getRowCount = $('div[id^=locRow]').length;  //this is correct  inputContent
+			//var locCnt = $("#"+locRowName).find('.vertical .btn-holder').length;
+			//console.log("locCnt = " + locCnt);
+			//this will only count the input object count on the page, only counting the newly added loc
+			//var getRowNewLocCount = $('div[class^=inputContent]').length;
+			var getRowNewLocCount = $('.inputContent').length;
+			console.log("getRowNewLocCount = " + getRowNewLocCount);
+
+			return getRowNewLocCount;
+		}	
+
+		function getRowCnt(){
+			//this will get the initial row count, which should be 1 by default  //horizontal Row
+			var getlocRowCount = $('div[id^=locRow]').length;  //this is correct  inputContent
+			console.log("getlocRowCount 1 = " + getlocRowCount);
+
+			//var getRowNewLocCount = $('.horizontal Row').length;
+			//var getRowCount2 = $('#mainContentDiv').find('.horizontal Row').length;
+			//var numItems = $('.horizontal Row').length; 
+			//console.log("getRowNewLocCount 2 = " + numItems);
+		
+			return getlocRowCount;
+		}	
+			
+		function getTotalPageLocCnt(){
+			var pagelocCnt = $('#LocContent').find('.vertical .btn-holder').length;
+			console.log("pagelocCnt = " + pagelocCnt);
+			return pagelocCnt;
+		}	
+			
+		function ValidateIPaddress(ipaddress) 
+		{
+			if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(myForm.emailAddr.value))
+			{
+				return (true)
+			}
+			alert("You have entered an invalid IP address!")
+			return (false)
+		}	
+		
+		$( "#Btn_Row1Loc1" ).click(function() {
+		   $( location ).attr("href", "LocationDeviceMain.html");
+		});
+
+	});
+	</script>
+</head>
+<body>
+<div id="mainContainer" >	
+	<div id="TopContainer" style="">
+		<div style="padding-bottom: 5px; align-self: flex-end;">Welcome! Julie. &nbsp;&nbsp;</div>
+		<div class="inner" style="padding: 15px 15px 8px 15px; float:right;">
+			<div class="popr" data-id="1"><img src="images/APP_Button_Menu.png" width="50px" height="40px"></div>
+		</div>
+		<div id="SubDiv" class="">
+			<div class="popr-box" data-box-id="1">
+				<a href="Login.html"><div class="popr-item">登出</div></a>
+				<a href="DeviceIDSettings.html"><div class="popr-item" id="feugait">顯示設備ID</div></a>
+				<a href="DeviceSystemStatusSettings.html"><div class="popr-item">顯示系統狀態</div></a>
+				<a href="ResetPassword.html"><div class="popr-item">重設密碼</div></a>
+				<a href="$loc"><div class="popr-item">權限設定</div></a>
+			</div>
+		</div>
+	</div>
+    <hr />
+	<div class="horizontal div1" style="border: 1px solid transparent;" >
+		<h2>Location Settings</h2>
+	</div>
+	<div id="locRow1" class="horizontal Row" style="border: 1px solid transparent; width:98%;height:48%; margin: 0 auto;top:5px; position:relative;" >		
+		<div id="Row1Loc1" class="vertical" style="width :180px;">
+			<div id="BtnHolder_locRow1_Loc1" class="vertical btn-holder">
+				<button id="Btn_Row1Loc1" class="button" style="width:120px;">Update & Go </button>
+			</div>
+			<br>
+			<div id="Rename_locRow1_Loc1" style="background-color: white; width: 250px;">
+				<input type="text" id="Textbox_locRow1_Loc1" placeholder="LocationA" class="inputContent" style="background-color: lightgray;">
+			</div>
+		</div>	
+		<div id="LocContent">
+			<div id="addLocBtn" class="vertical" style="float:right;">	
+				<div class="vertical btn-holder">
+					<button id="addLocBtn" class="button" style="width: 120px;">Add Location</button>
+				</div><br /><br />
+			</div>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>
