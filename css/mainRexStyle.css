@@ -1,0 +1,48 @@
+﻿html {
+    height: 100%;
+}
+body {
+    background-color: #131313;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.mainContent {
+    background-color: #131313; /* blue */
+    width: 200px;
+    height: 500px;
+    color: #AD8C41;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border: 0;
+    /* border: 1px solid red; */
+    padding: 35px 60px 5px 60px; /*padding-top, padding-right, padding-bottom, padding-left */
+}
+.rowMaxLeft {
+    background-color: #131313; /* yellow*/
+    cursor: pointer;
+    width: 47%;
+    height: 100%;
+    display: block;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    /* border-top: none;  border-right: 2px solid red; border-bottom: none; border-left: none; */
+    float: left;
+}
+
+.rowMaxRight {
+    background-color: #131313; /* DarkGreen */
+    cursor: pointer;
+    width: 47%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+}
+.break{
+	display:block;
+	margin:0 0 0.3em;
+}
